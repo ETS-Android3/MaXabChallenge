@@ -62,6 +62,8 @@ android {
 }
 
 dependencies {
+    implementation(project(ModuleDependency.CORE))
+
     // Gradle 7 introduces version catalogs - a new way for sharing dependency versions across projects.
     // Dependencies are defined in gradle.settings.kts file.
     // Code completion problem is fixed in InteliJ IDEA 2021.2 EAP 1 https://youtrack.jetbrains.com/issue/IDEA-266509

@@ -177,3 +177,4 @@ dependencyResolutionManagement {
         }
     }
 }
+include(":core")
