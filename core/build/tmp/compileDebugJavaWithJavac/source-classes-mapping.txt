@@ -1,5 +1,3 @@
-com/example/core/BuildConfig.java
- com.example.core.BuildConfig
 com/example/core/base/presentation/navigation/NavManager_Factory.java
  com.example.core.base.presentation.navigation.NavManager_Factory
  com.example.core.base.presentation.navigation.NavManager_Factory$InstanceHolder
@@ -13,5 +11,7 @@ com/example/core/di/module/BaseModule_ProvideContextFactory.java
  com.example.core.di.module.BaseModule_ProvideContextFactory
 com/example/core/di/module/BaseModule_ProvideRetrofitBuilderFactory.java
  com.example.core.di.module.BaseModule_ProvideRetrofitBuilderFactory
+com/example/core/BuildConfig.java
+ com.example.core.BuildConfig
 com/example/core/di/module/BaseModule_ProvideHttpClient$core_debugFactory.java
  com.example.core.di.module.BaseModule_ProvideHttpClient$core_debugFactory

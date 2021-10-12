@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/purple_500">
+
+    <TextView
+        android:id="@+id/countryCurrencyTv"
+        style="@style/textViewStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen_12dp"
+        android:layout_marginTop="@dimen/dimen_16dp"
+        android:layout_marginBottom="@dimen/dimen_16dp"
+        android:textSize="@dimen/dimen_16sp"
+        android:background="?viewBackground"
+        android:padding="@dimen/dimen_8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="sassadsaa" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
