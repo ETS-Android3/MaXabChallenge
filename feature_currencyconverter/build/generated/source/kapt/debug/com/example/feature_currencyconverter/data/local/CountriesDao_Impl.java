@@ -10,7 +10,7 @@ import androidx.room.util.CursorUtil;
 import androidx.room.util.DBUtil;
 import androidx.sqlite.db.SupportSQLiteStatement;
 import com.example.feature_currencyconverter.data.local.model.CountryEntity;
-import com.example.feature_currencyconverter.data.local.model.CountryRateEntityTypeConverter;
+import com.example.feature_currencyconverter.data.local.model.converter.CountryRateEntityTypeConverter;
 import java.lang.Class;
 import java.lang.Double;
 import java.lang.Exception;

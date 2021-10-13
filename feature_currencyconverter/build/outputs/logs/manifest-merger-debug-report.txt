@@ -4,10 +4,10 @@ ADDED from /home/mosaab/AndroidStudioProjects/MaXabChallenge/feature_currencycon
 INJECTED from /home/mosaab/AndroidStudioProjects/MaXabChallenge/feature_currencyconverter/src/main/AndroidManifest.xml:2:1-12:12
 INJECTED from /home/mosaab/AndroidStudioProjects/MaXabChallenge/feature_currencyconverter/src/main/AndroidManifest.xml:2:1-12:12
 INJECTED from /home/mosaab/AndroidStudioProjects/MaXabChallenge/feature_currencyconverter/src/main/AndroidManifest.xml:2:1-12:12
-MERGED from [androidx.room:room-ktx:2.4.0-alpha05] /home/mosaab/.gradle/caches/transforms-3/60192851741a16867310e5f044e65474/transformed/jetified-room-ktx-2.4.0-alpha05/AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.room:room-runtime:2.4.0-alpha05] /home/mosaab/.gradle/caches/transforms-3/80184dcef609c22e1d705f9e3f4e7e3a/transformed/room-runtime-2.4.0-alpha05/AndroidManifest.xml:17:1-31:12
-MERGED from [androidx.sqlite:sqlite-framework:2.2.0-alpha02] /home/mosaab/.gradle/caches/transforms-3/dab6f060403f22ed8fc7b440646a3f82/transformed/sqlite-framework-2.2.0-alpha02/AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.sqlite:sqlite:2.2.0-alpha02] /home/mosaab/.gradle/caches/transforms-3/163e1e7be2aded4209f4b7368bcfe253/transformed/sqlite-2.2.0-alpha02/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.room:room-ktx:2.4.0-alpha05] /home/mosaab/.gradle/caches/transforms-3/b0842856d5d55eedfc788662b40f1d82/transformed/jetified-room-ktx-2.4.0-alpha05/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.room:room-runtime:2.4.0-alpha05] /home/mosaab/.gradle/caches/transforms-3/f99bf0b8e8ed3e867ec6f8495c0d9c44/transformed/room-runtime-2.4.0-alpha05/AndroidManifest.xml:17:1-31:12
+MERGED from [androidx.sqlite:sqlite-framework:2.2.0-alpha02] /home/mosaab/.gradle/caches/transforms-3/182bafacceb4427dd0d547231152b431/transformed/sqlite-framework-2.2.0-alpha02/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.sqlite:sqlite:2.2.0-alpha02] /home/mosaab/.gradle/caches/transforms-3/aed4cb3b3fa9d01ff8f0b745fe60b942/transformed/sqlite-2.2.0-alpha02/AndroidManifest.xml:17:1-24:12
 INJECTED from /home/mosaab/AndroidStudioProjects/MaXabChallenge/feature_currencyconverter/src/main/AndroidManifest.xml:2:1-12:12
 INJECTED from /home/mosaab/AndroidStudioProjects/MaXabChallenge/feature_currencyconverter/src/main/AndroidManifest.xml:2:1-12:12
 INJECTED from /home/mosaab/AndroidStudioProjects/MaXabChallenge/feature_currencyconverter/src/main/AndroidManifest.xml:2:1-12:12
@@ -43,14 +43,14 @@ uses-sdk
 INJECTED from /home/mosaab/AndroidStudioProjects/MaXabChallenge/feature_currencyconverter/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /home/mosaab/AndroidStudioProjects/MaXabChallenge/feature_currencyconverter/src/main/AndroidManifest.xml
 INJECTED from /home/mosaab/AndroidStudioProjects/MaXabChallenge/feature_currencyconverter/src/main/AndroidManifest.xml
-MERGED from [androidx.room:room-ktx:2.4.0-alpha05] /home/mosaab/.gradle/caches/transforms-3/60192851741a16867310e5f044e65474/transformed/jetified-room-ktx-2.4.0-alpha05/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.room:room-ktx:2.4.0-alpha05] /home/mosaab/.gradle/caches/transforms-3/60192851741a16867310e5f044e65474/transformed/jetified-room-ktx-2.4.0-alpha05/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.room:room-runtime:2.4.0-alpha05] /home/mosaab/.gradle/caches/transforms-3/80184dcef609c22e1d705f9e3f4e7e3a/transformed/room-runtime-2.4.0-alpha05/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.room:room-runtime:2.4.0-alpha05] /home/mosaab/.gradle/caches/transforms-3/80184dcef609c22e1d705f9e3f4e7e3a/transformed/room-runtime-2.4.0-alpha05/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.sqlite:sqlite-framework:2.2.0-alpha02] /home/mosaab/.gradle/caches/transforms-3/dab6f060403f22ed8fc7b440646a3f82/transformed/sqlite-framework-2.2.0-alpha02/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.sqlite:sqlite-framework:2.2.0-alpha02] /home/mosaab/.gradle/caches/transforms-3/dab6f060403f22ed8fc7b440646a3f82/transformed/sqlite-framework-2.2.0-alpha02/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.sqlite:sqlite:2.2.0-alpha02] /home/mosaab/.gradle/caches/transforms-3/163e1e7be2aded4209f4b7368bcfe253/transformed/sqlite-2.2.0-alpha02/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.sqlite:sqlite:2.2.0-alpha02] /home/mosaab/.gradle/caches/transforms-3/163e1e7be2aded4209f4b7368bcfe253/transformed/sqlite-2.2.0-alpha02/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.room:room-ktx:2.4.0-alpha05] /home/mosaab/.gradle/caches/transforms-3/b0842856d5d55eedfc788662b40f1d82/transformed/jetified-room-ktx-2.4.0-alpha05/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.room:room-ktx:2.4.0-alpha05] /home/mosaab/.gradle/caches/transforms-3/b0842856d5d55eedfc788662b40f1d82/transformed/jetified-room-ktx-2.4.0-alpha05/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.room:room-runtime:2.4.0-alpha05] /home/mosaab/.gradle/caches/transforms-3/f99bf0b8e8ed3e867ec6f8495c0d9c44/transformed/room-runtime-2.4.0-alpha05/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.room:room-runtime:2.4.0-alpha05] /home/mosaab/.gradle/caches/transforms-3/f99bf0b8e8ed3e867ec6f8495c0d9c44/transformed/room-runtime-2.4.0-alpha05/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.sqlite:sqlite-framework:2.2.0-alpha02] /home/mosaab/.gradle/caches/transforms-3/182bafacceb4427dd0d547231152b431/transformed/sqlite-framework-2.2.0-alpha02/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.sqlite:sqlite-framework:2.2.0-alpha02] /home/mosaab/.gradle/caches/transforms-3/182bafacceb4427dd0d547231152b431/transformed/sqlite-framework-2.2.0-alpha02/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.sqlite:sqlite:2.2.0-alpha02] /home/mosaab/.gradle/caches/transforms-3/aed4cb3b3fa9d01ff8f0b745fe60b942/transformed/sqlite-2.2.0-alpha02/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.sqlite:sqlite:2.2.0-alpha02] /home/mosaab/.gradle/caches/transforms-3/aed4cb3b3fa9d01ff8f0b745fe60b942/transformed/sqlite-2.2.0-alpha02/AndroidManifest.xml:20:5-22:41
 INJECTED from /home/mosaab/AndroidStudioProjects/MaXabChallenge/feature_currencyconverter/src/main/AndroidManifest.xml
 INJECTED from /home/mosaab/AndroidStudioProjects/MaXabChallenge/feature_currencyconverter/src/main/AndroidManifest.xml
 	android:targetSdkVersion
@@ -62,12 +62,12 @@ INJECTED from /home/mosaab/AndroidStudioProjects/MaXabChallenge/feature_currency
 		ADDED from /home/mosaab/AndroidStudioProjects/MaXabChallenge/feature_currencyconverter/src/main/AndroidManifest.xml
 		INJECTED from /home/mosaab/AndroidStudioProjects/MaXabChallenge/feature_currencyconverter/src/main/AndroidManifest.xml
 application
-ADDED from [androidx.room:room-runtime:2.4.0-alpha05] /home/mosaab/.gradle/caches/transforms-3/80184dcef609c22e1d705f9e3f4e7e3a/transformed/room-runtime-2.4.0-alpha05/AndroidManifest.xml:24:5-29:19
+ADDED from [androidx.room:room-runtime:2.4.0-alpha05] /home/mosaab/.gradle/caches/transforms-3/f99bf0b8e8ed3e867ec6f8495c0d9c44/transformed/room-runtime-2.4.0-alpha05/AndroidManifest.xml:24:5-29:19
 service#androidx.room.MultiInstanceInvalidationService
-ADDED from [androidx.room:room-runtime:2.4.0-alpha05] /home/mosaab/.gradle/caches/transforms-3/80184dcef609c22e1d705f9e3f4e7e3a/transformed/room-runtime-2.4.0-alpha05/AndroidManifest.xml:25:9-28:40
+ADDED from [androidx.room:room-runtime:2.4.0-alpha05] /home/mosaab/.gradle/caches/transforms-3/f99bf0b8e8ed3e867ec6f8495c0d9c44/transformed/room-runtime-2.4.0-alpha05/AndroidManifest.xml:25:9-28:40
 	android:exported
-		ADDED from [androidx.room:room-runtime:2.4.0-alpha05] /home/mosaab/.gradle/caches/transforms-3/80184dcef609c22e1d705f9e3f4e7e3a/transformed/room-runtime-2.4.0-alpha05/AndroidManifest.xml:28:13-37
+		ADDED from [androidx.room:room-runtime:2.4.0-alpha05] /home/mosaab/.gradle/caches/transforms-3/f99bf0b8e8ed3e867ec6f8495c0d9c44/transformed/room-runtime-2.4.0-alpha05/AndroidManifest.xml:28:13-37
 	android:directBootAware
-		ADDED from [androidx.room:room-runtime:2.4.0-alpha05] /home/mosaab/.gradle/caches/transforms-3/80184dcef609c22e1d705f9e3f4e7e3a/transformed/room-runtime-2.4.0-alpha05/AndroidManifest.xml:27:13-43
+		ADDED from [androidx.room:room-runtime:2.4.0-alpha05] /home/mosaab/.gradle/caches/transforms-3/f99bf0b8e8ed3e867ec6f8495c0d9c44/transformed/room-runtime-2.4.0-alpha05/AndroidManifest.xml:27:13-43
 	android:name
-		ADDED from [androidx.room:room-runtime:2.4.0-alpha05] /home/mosaab/.gradle/caches/transforms-3/80184dcef609c22e1d705f9e3f4e7e3a/transformed/room-runtime-2.4.0-alpha05/AndroidManifest.xml:26:13-74
+		ADDED from [androidx.room:room-runtime:2.4.0-alpha05] /home/mosaab/.gradle/caches/transforms-3/f99bf0b8e8ed3e867ec6f8495c0d9c44/transformed/room-runtime-2.4.0-alpha05/AndroidManifest.xml:26:13-74

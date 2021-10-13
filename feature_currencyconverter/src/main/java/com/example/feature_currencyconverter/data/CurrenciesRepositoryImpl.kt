@@ -17,9 +17,11 @@ internal class CurrenciesRepositoryImpl @Inject constructor(
     override suspend fun getCurrencies(): Country? {
         return try {
             val apiResponse = countriesAPIService.getCountries()
-            if (apiResponse.success) {
-                val entityModel =  apiResponse.toEntity()
-                entityModel.let { countriesDao.insertCountries(it) }
+            apiResponse?.let {
+                if (apiResponse.success) {
+                    val entityModel = apiResponse.toEntity()
+                    entityModel.let { countriesDao.insertCountries(it) }
+                }
             }
             countriesDao.getAll().toDomainModel()
         } catch (e: UnknownHostException) {

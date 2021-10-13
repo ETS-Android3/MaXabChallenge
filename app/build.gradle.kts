@@ -86,8 +86,8 @@ dependencies {
     kapt(libs.dagger.kapt)
     kapt(libs.dagger.annotation)
 
+    testImplementation(project(ModuleDependency.LIBRARY_TEST_UTILS))
     testImplementation(libs.bundles.test)
-
     testRuntimeOnly(libs.junit.jupiter.engine)
 }
 
