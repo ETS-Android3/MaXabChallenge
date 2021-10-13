@@ -4,6 +4,7 @@ import android.app.Application
 import android.content.Context
 import com.example.core.BuildConfig
 import com.example.core.base.data.APIConst
+import com.example.core.base.data.network.AuthenticationInterceptor
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
@@ -31,14 +32,14 @@ class BaseModule {
         logging.level = HttpLoggingInterceptor.Level.BODY
 
         httpClient.addInterceptor(logging)
-
+            .addInterceptor(AuthenticationInterceptor(BuildConfig.GRADLE_API_TOKEN))
         return httpClient.build()
     }
 
     @Provides
     fun provideRetrofitBuilder(httpClient: OkHttpClient): Retrofit.Builder {
         return Retrofit.Builder()
-            .baseUrl("BuildConfig.GRADLE_API_BASE_URL")
+            .baseUrl(BuildConfig.GRADLE_API_BASE_URL)
             .client(httpClient)
             .addConverterFactory(MoshiConverterFactory.create())
     }

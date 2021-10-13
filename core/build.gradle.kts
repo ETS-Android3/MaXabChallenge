@@ -17,6 +17,11 @@ android {
         versionCode = AndroidConfig.VERSION_CODE
         versionName = AndroidConfig.VERSION_NAME
         testInstrumentationRunner = AndroidConfig.TEST_INSTRUMENTATION_RUNNER
+
+
+        buildConfigFieldFromGradleProperty("apiBaseUrl")
+        buildConfigFieldFromGradleProperty("apiToken")
+
     }
 
 
@@ -30,6 +35,7 @@ android {
             isMinifyEnabled = BuildTypeDebug.isMinifyEnabled
         }
     }
+
 
     testOptions {
         unitTests.isReturnDefaultValues = TestOptions.IS_RETURN_DEFAULT_VALUES
