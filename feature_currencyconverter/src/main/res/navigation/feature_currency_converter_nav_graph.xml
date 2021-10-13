@@ -9,6 +9,21 @@
         android:label="CurrenciesFragment"
         app:moduleName="feature_currencyconverter">
 
+
+        <action
+            android:id="@+id/action_currenciesConverterFragment_to_convertCurrencyFragment"
+            app:destination="@id/convertCurrencyFragment" />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/convertCurrencyFragment"
+        android:name="com.example.feature_currencyconverter.presentation.convert.ui.fragment.ConvertCurrencyFragment"
+        android:label="ConvertCurrencyFragment"
+        app:moduleName="feature_currencyconverter">
+        <argument
+            android:name="countryConverter"
+            app:argType="com.example.feature_currencyconverter.presentation.convert.model.CountryRateConverter" />
     </fragment>
 
 </navigation>

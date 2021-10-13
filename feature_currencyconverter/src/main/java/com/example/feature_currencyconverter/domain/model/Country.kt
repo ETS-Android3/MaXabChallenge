@@ -5,3 +5,5 @@ internal data class Country(
     val rates: MutableList<CountryRate> = mutableListOf()
 )
 
+
+

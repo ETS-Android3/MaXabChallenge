@@ -1,0 +1,73 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /home/mosaab/AndroidStudioProjects/MaXabChallenge/feature_currencyconverter/src/main/AndroidManifest.xml:2:1-12:12
+INJECTED from /home/mosaab/AndroidStudioProjects/MaXabChallenge/feature_currencyconverter/src/main/AndroidManifest.xml:2:1-12:12
+INJECTED from /home/mosaab/AndroidStudioProjects/MaXabChallenge/feature_currencyconverter/src/main/AndroidManifest.xml:2:1-12:12
+INJECTED from /home/mosaab/AndroidStudioProjects/MaXabChallenge/feature_currencyconverter/src/main/AndroidManifest.xml:2:1-12:12
+MERGED from [androidx.room:room-ktx:2.4.0-alpha05] /home/mosaab/.gradle/caches/transforms-3/60192851741a16867310e5f044e65474/transformed/jetified-room-ktx-2.4.0-alpha05/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.room:room-runtime:2.4.0-alpha05] /home/mosaab/.gradle/caches/transforms-3/80184dcef609c22e1d705f9e3f4e7e3a/transformed/room-runtime-2.4.0-alpha05/AndroidManifest.xml:17:1-31:12
+MERGED from [androidx.sqlite:sqlite-framework:2.2.0-alpha02] /home/mosaab/.gradle/caches/transforms-3/dab6f060403f22ed8fc7b440646a3f82/transformed/sqlite-framework-2.2.0-alpha02/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.sqlite:sqlite:2.2.0-alpha02] /home/mosaab/.gradle/caches/transforms-3/163e1e7be2aded4209f4b7368bcfe253/transformed/sqlite-2.2.0-alpha02/AndroidManifest.xml:17:1-24:12
+INJECTED from /home/mosaab/AndroidStudioProjects/MaXabChallenge/feature_currencyconverter/src/main/AndroidManifest.xml:2:1-12:12
+INJECTED from /home/mosaab/AndroidStudioProjects/MaXabChallenge/feature_currencyconverter/src/main/AndroidManifest.xml:2:1-12:12
+INJECTED from /home/mosaab/AndroidStudioProjects/MaXabChallenge/feature_currencyconverter/src/main/AndroidManifest.xml:2:1-12:12
+	package
+		ADDED from /home/mosaab/AndroidStudioProjects/MaXabChallenge/feature_currencyconverter/src/main/AndroidManifest.xml:4:5-52
+		INJECTED from /home/mosaab/AndroidStudioProjects/MaXabChallenge/feature_currencyconverter/src/main/AndroidManifest.xml
+		INJECTED from /home/mosaab/AndroidStudioProjects/MaXabChallenge/feature_currencyconverter/src/main/AndroidManifest.xml
+	android:versionName
+		INJECTED from /home/mosaab/AndroidStudioProjects/MaXabChallenge/feature_currencyconverter/src/main/AndroidManifest.xml
+		ADDED from /home/mosaab/AndroidStudioProjects/MaXabChallenge/feature_currencyconverter/src/main/AndroidManifest.xml:2:1-12:12
+		INJECTED from /home/mosaab/AndroidStudioProjects/MaXabChallenge/feature_currencyconverter/src/main/AndroidManifest.xml
+	xmlns:dist
+		ADDED from /home/mosaab/AndroidStudioProjects/MaXabChallenge/feature_currencyconverter/src/main/AndroidManifest.xml:3:5-61
+	xmlns:android
+		ADDED from /home/mosaab/AndroidStudioProjects/MaXabChallenge/feature_currencyconverter/src/main/AndroidManifest.xml:2:1-12:12
+	android:versionCode
+		INJECTED from /home/mosaab/AndroidStudioProjects/MaXabChallenge/feature_currencyconverter/src/main/AndroidManifest.xml
+		ADDED from /home/mosaab/AndroidStudioProjects/MaXabChallenge/feature_currencyconverter/src/main/AndroidManifest.xml:2:1-12:12
+		INJECTED from /home/mosaab/AndroidStudioProjects/MaXabChallenge/feature_currencyconverter/src/main/AndroidManifest.xml
+dist:module
+ADDED from /home/mosaab/AndroidStudioProjects/MaXabChallenge/feature_currencyconverter/src/main/AndroidManifest.xml:6:5-11:19
+	dist:instant
+		ADDED from /home/mosaab/AndroidStudioProjects/MaXabChallenge/feature_currencyconverter/src/main/AndroidManifest.xml:7:9-29
+	dist:title
+		ADDED from /home/mosaab/AndroidStudioProjects/MaXabChallenge/feature_currencyconverter/src/main/AndroidManifest.xml:9:9-61
+	dist:onDemand
+		ADDED from /home/mosaab/AndroidStudioProjects/MaXabChallenge/feature_currencyconverter/src/main/AndroidManifest.xml:8:9-29
+dist:fusing
+ADDED from /home/mosaab/AndroidStudioProjects/MaXabChallenge/feature_currencyconverter/src/main/AndroidManifest.xml:10:9-39
+	include
+		ADDED from /home/mosaab/AndroidStudioProjects/MaXabChallenge/feature_currencyconverter/src/main/AndroidManifest.xml:10:22-36
+uses-sdk
+INJECTED from /home/mosaab/AndroidStudioProjects/MaXabChallenge/feature_currencyconverter/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /home/mosaab/AndroidStudioProjects/MaXabChallenge/feature_currencyconverter/src/main/AndroidManifest.xml
+INJECTED from /home/mosaab/AndroidStudioProjects/MaXabChallenge/feature_currencyconverter/src/main/AndroidManifest.xml
+MERGED from [androidx.room:room-ktx:2.4.0-alpha05] /home/mosaab/.gradle/caches/transforms-3/60192851741a16867310e5f044e65474/transformed/jetified-room-ktx-2.4.0-alpha05/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.room:room-ktx:2.4.0-alpha05] /home/mosaab/.gradle/caches/transforms-3/60192851741a16867310e5f044e65474/transformed/jetified-room-ktx-2.4.0-alpha05/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.room:room-runtime:2.4.0-alpha05] /home/mosaab/.gradle/caches/transforms-3/80184dcef609c22e1d705f9e3f4e7e3a/transformed/room-runtime-2.4.0-alpha05/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.room:room-runtime:2.4.0-alpha05] /home/mosaab/.gradle/caches/transforms-3/80184dcef609c22e1d705f9e3f4e7e3a/transformed/room-runtime-2.4.0-alpha05/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.sqlite:sqlite-framework:2.2.0-alpha02] /home/mosaab/.gradle/caches/transforms-3/dab6f060403f22ed8fc7b440646a3f82/transformed/sqlite-framework-2.2.0-alpha02/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.sqlite:sqlite-framework:2.2.0-alpha02] /home/mosaab/.gradle/caches/transforms-3/dab6f060403f22ed8fc7b440646a3f82/transformed/sqlite-framework-2.2.0-alpha02/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.sqlite:sqlite:2.2.0-alpha02] /home/mosaab/.gradle/caches/transforms-3/163e1e7be2aded4209f4b7368bcfe253/transformed/sqlite-2.2.0-alpha02/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.sqlite:sqlite:2.2.0-alpha02] /home/mosaab/.gradle/caches/transforms-3/163e1e7be2aded4209f4b7368bcfe253/transformed/sqlite-2.2.0-alpha02/AndroidManifest.xml:20:5-22:41
+INJECTED from /home/mosaab/AndroidStudioProjects/MaXabChallenge/feature_currencyconverter/src/main/AndroidManifest.xml
+INJECTED from /home/mosaab/AndroidStudioProjects/MaXabChallenge/feature_currencyconverter/src/main/AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from /home/mosaab/AndroidStudioProjects/MaXabChallenge/feature_currencyconverter/src/main/AndroidManifest.xml
+		ADDED from /home/mosaab/AndroidStudioProjects/MaXabChallenge/feature_currencyconverter/src/main/AndroidManifest.xml
+		INJECTED from /home/mosaab/AndroidStudioProjects/MaXabChallenge/feature_currencyconverter/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /home/mosaab/AndroidStudioProjects/MaXabChallenge/feature_currencyconverter/src/main/AndroidManifest.xml
+		ADDED from /home/mosaab/AndroidStudioProjects/MaXabChallenge/feature_currencyconverter/src/main/AndroidManifest.xml
+		INJECTED from /home/mosaab/AndroidStudioProjects/MaXabChallenge/feature_currencyconverter/src/main/AndroidManifest.xml
+application
+ADDED from [androidx.room:room-runtime:2.4.0-alpha05] /home/mosaab/.gradle/caches/transforms-3/80184dcef609c22e1d705f9e3f4e7e3a/transformed/room-runtime-2.4.0-alpha05/AndroidManifest.xml:24:5-29:19
+service#androidx.room.MultiInstanceInvalidationService
+ADDED from [androidx.room:room-runtime:2.4.0-alpha05] /home/mosaab/.gradle/caches/transforms-3/80184dcef609c22e1d705f9e3f4e7e3a/transformed/room-runtime-2.4.0-alpha05/AndroidManifest.xml:25:9-28:40
+	android:exported
+		ADDED from [androidx.room:room-runtime:2.4.0-alpha05] /home/mosaab/.gradle/caches/transforms-3/80184dcef609c22e1d705f9e3f4e7e3a/transformed/room-runtime-2.4.0-alpha05/AndroidManifest.xml:28:13-37
+	android:directBootAware
+		ADDED from [androidx.room:room-runtime:2.4.0-alpha05] /home/mosaab/.gradle/caches/transforms-3/80184dcef609c22e1d705f9e3f4e7e3a/transformed/room-runtime-2.4.0-alpha05/AndroidManifest.xml:27:13-43
+	android:name
+		ADDED from [androidx.room:room-runtime:2.4.0-alpha05] /home/mosaab/.gradle/caches/transforms-3/80184dcef609c22e1d705f9e3f4e7e3a/transformed/room-runtime-2.4.0-alpha05/AndroidManifest.xml:26:13-74

@@ -1,0 +1,1 @@
+[{"navFile":"src/main/res/navigation/feature_currency_converter_nav_graph.xml","javaFiles":["com.example.feature_currencyconverter.presentation.currencies.ui.fragment.CurrenciesFragmentDirections","com.example.feature_currencyconverter.presentation.convert.ui.fragment.ConvertCurrencyFragmentArgs"]}]
