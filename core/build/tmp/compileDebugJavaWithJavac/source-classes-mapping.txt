@@ -1,0 +1,17 @@
+com/example/core/base/presentation/navigation/NavManager_Factory.java
+ com.example.core.base.presentation.navigation.NavManager_Factory
+ com.example.core.base.presentation.navigation.NavManager_Factory$InstanceHolder
+com/example/core/BuildConfig.java
+ com.example.core.BuildConfig
+com/example/core/di/ViewModelFactory_Factory.java
+ com.example.core.di.ViewModelFactory_Factory
+com/example/core/di/component/DaggerBaseComponent.java
+ com.example.core.di.component.DaggerBaseComponent
+ com.example.core.di.component.DaggerBaseComponent$1
+ com.example.core.di.component.DaggerBaseComponent$Builder
+com/example/core/di/module/BaseModule_ProvideContextFactory.java
+ com.example.core.di.module.BaseModule_ProvideContextFactory
+com/example/core/di/module/BaseModule_ProvideRetrofitBuilderFactory.java
+ com.example.core.di.module.BaseModule_ProvideRetrofitBuilderFactory
+com/example/core/di/module/BaseModule_ProvideHttpClient$core_debugFactory.java
+ com.example.core.di.module.BaseModule_ProvideHttpClient$core_debugFactory

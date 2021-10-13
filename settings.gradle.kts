@@ -9,6 +9,7 @@ enableFeaturePreview("ONE_LOCKFILE_PER_PROJECT")
 
 include(
     ":app",
+    ":feature_currencyconverter",
     ":core"
 )
 
@@ -177,4 +178,3 @@ dependencyResolutionManagement {
         }
     }
 }
-include(":core")
