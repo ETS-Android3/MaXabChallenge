@@ -9,7 +9,6 @@ internal interface CountriesAPIService {
 
     @POST("/latest")
     suspend fun getCountries(
-        @Query("access_key") access_key: String? = null,
         @Query("format") format: Int = 1
     ): CountriesResponse
 
