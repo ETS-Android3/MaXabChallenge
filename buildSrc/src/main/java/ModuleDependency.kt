@@ -8,6 +8,7 @@ object ModuleDependency {
     const val APP = ":app"
     const val CURRENCY_CONVERTER =  ":feature_currencyconverter"
     const val CORE = ":core"
+    const val LIBRARY_TEST_UTILS = ":library_test_utils"
 
 
     /* const val LIBRARY_TEST_UTILS = ":library_test_utils"*/
