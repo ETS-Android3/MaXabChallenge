@@ -37,7 +37,7 @@ fun Fragment.navigateSafe(directions: NavDirections, navOptions: NavOptions? = n
  */
 
 fun Fragment.canNavigate(): Boolean {
-   /* val navController = findNavController()
+    val navController = findNavController()
     val destinationIdInNavController = navController.currentDestination?.id
 
  // add tag_navigation_destination_id to your res\values\ids.xml so that it's unique:
@@ -48,12 +48,9 @@ fun Fragment.canNavigate(): Boolean {
         view?.setTag(R.id.tag_navigation_destination_id, destinationIdOfThisFragment)
         true
     } else {
-*//*
-        Timber.d("May not navigate: current destination is not the current fragment.")
-*//*
+
+        /*Timber.d("May not navigate: current destination is not the current fragment.")*/
+
         false
     }
-
-*/
-    return false
 }

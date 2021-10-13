@@ -16,6 +16,7 @@ import com.example.core.di.utils.InjectUtils
 import com.example.feature_currencyconverter.databinding.FragmentCurrenciesBinding
 import com.example.feature_currencyconverter.di.DaggerCurrencyConverterComponent
 import com.example.feature_currencyconverter.domain.model.Country
+import com.example.feature_currencyconverter.domain.model.CountryRate
 import com.example.feature_currencyconverter.presentation.currencies.ui.adapter.CurrenciesAdapter
 import com.example.feature_currencyconverter.presentation.currencies.viewmodel.CurrenciesViewModel
 import com.example.maxabchallenge.app.getMaxabApp
@@ -26,9 +27,10 @@ class CurrenciesFragment : BaseFragment() {
 
     private val currenciesAdapter by lazy{
         CurrenciesAdapter{
-
+            onCountrySelected(it)
         }
     }
+
 
     @Inject
     internal lateinit var currenciesViewModelFactory: ViewModelFactory<CurrenciesViewModel>
@@ -80,5 +82,10 @@ class CurrenciesFragment : BaseFragment() {
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerView.adapter = currenciesAdapter
     }
+
+    private fun onCountrySelected(countryRate: CountryRate) {
+        currenciesViewModel.navigateToConvertCurrency(countryRate)
+    }
+
 
 }

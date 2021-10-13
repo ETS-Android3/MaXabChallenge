@@ -4,6 +4,10 @@
         "source": "/home/mosaab/AndroidStudioProjects/MaXabChallenge/feature_currencyconverter/src/main/res/layout/currency_item.xml"
     },
     {
+        "merged": "/home/mosaab/AndroidStudioProjects/MaXabChallenge/feature_currencyconverter/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_convert_currency.xml",
+        "source": "/home/mosaab/AndroidStudioProjects/MaXabChallenge/feature_currencyconverter/src/main/res/layout/fragment_convert_currency.xml"
+    },
+    {
         "merged": "/home/mosaab/AndroidStudioProjects/MaXabChallenge/feature_currencyconverter/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/selected_country.xml",
         "source": "/home/mosaab/AndroidStudioProjects/MaXabChallenge/feature_currencyconverter/src/main/res/layout/selected_country.xml"
     },

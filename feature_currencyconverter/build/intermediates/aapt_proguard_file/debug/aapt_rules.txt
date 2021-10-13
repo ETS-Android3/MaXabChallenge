@@ -1,7 +1,11 @@
 -keep class androidx.room.MultiInstanceInvalidationService { <init>(); }
+-keep class androidx.appcompat.widget.AppCompatEditText { <init>(android.content.Context, android.util.AttributeSet); }
+
 -keep class androidx.constraintlayout.widget.ConstraintLayout { <init>(android.content.Context, android.util.AttributeSet); }
 
 -keep class androidx.recyclerview.widget.RecyclerView { <init>(android.content.Context, android.util.AttributeSet); }
+
+-keep class com.example.feature_currencyconverter.presentation.convert.ui.fragment.ConvertCurrencyFragment { <init>(...); }
 
 -keep class com.example.feature_currencyconverter.presentation.currencies.ui.fragment.CurrenciesFragment { <init>(...); }
 

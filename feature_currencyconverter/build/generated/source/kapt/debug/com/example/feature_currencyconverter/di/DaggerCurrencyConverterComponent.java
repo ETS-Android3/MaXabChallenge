@@ -4,7 +4,6 @@ package com.example.feature_currencyconverter.di;
 import android.app.Application;
 import android.content.Context;
 import com.example.core.base.presentation.activity.BaseActivity;
-import com.example.core.base.presentation.navigation.NavManager_Factory;
 import com.example.core.di.ViewModelFactory;
 import com.example.core.di.component.BaseComponent;
 import com.example.core.di.module.BaseModule;
@@ -15,8 +14,14 @@ import com.example.feature_currencyconverter.data.local.CountriesDao;
 import com.example.feature_currencyconverter.data.local.CurrencyConverterDatabase;
 import com.example.feature_currencyconverter.data.remote.service.CountriesAPIService;
 import com.example.feature_currencyconverter.domain.repository.CurrenciesRepository;
+import com.example.feature_currencyconverter.domain.usecase.ConvertCurrencyUseCase_Factory;
 import com.example.feature_currencyconverter.domain.usecase.GetCurrenciesUseCase;
 import com.example.feature_currencyconverter.domain.usecase.GetCurrenciesUseCase_Factory;
+import com.example.feature_currencyconverter.presentation.convert.di.ConvertCurrencyFragmentBuilderModule_ProvideConvertCurrencyFragment;
+import com.example.feature_currencyconverter.presentation.convert.ui.fragment.ConvertCurrencyFragment;
+import com.example.feature_currencyconverter.presentation.convert.ui.fragment.ConvertCurrencyFragment_MembersInjector;
+import com.example.feature_currencyconverter.presentation.convert.viewmodel.ConvertCurrencyViewModel;
+import com.example.feature_currencyconverter.presentation.convert.viewmodel.ConvertCurrencyViewModel_Factory;
 import com.example.feature_currencyconverter.presentation.currencies.di.CurrenciesFragmentBuilderModule_ProvideCurrenciesFragment;
 import com.example.feature_currencyconverter.presentation.currencies.di.CurrenciesModule;
 import com.example.feature_currencyconverter.presentation.currencies.di.CurrenciesModule_ProvideAlbumDao$feature_currencyconverter_debugFactory;
@@ -35,6 +40,7 @@ import dagger.android.support.DaggerFragment_MembersInjector;
 import dagger.internal.DaggerGenerated;
 import dagger.internal.DoubleCheck;
 import dagger.internal.InstanceFactory;
+import dagger.internal.MapBuilder;
 import dagger.internal.Preconditions;
 import java.util.Collections;
 import java.util.Map;
@@ -51,6 +57,8 @@ public final class DaggerCurrencyConverterComponent implements CurrencyConverter
   private final DaggerCurrencyConverterComponent currencyConverterComponent = this;
 
   private Provider<CurrenciesFragmentBuilderModule_ProvideCurrenciesFragment.CurrenciesFragmentSubcomponent.Factory> currenciesFragmentSubcomponentFactoryProvider;
+
+  private Provider<ConvertCurrencyFragmentBuilderModule_ProvideConvertCurrencyFragment.ConvertCurrencyFragmentSubcomponent.Factory> convertCurrencyFragmentSubcomponentFactoryProvider;
 
   private Provider<OkHttpClient> provideHttpClient$core_debugProvider;
 
@@ -73,7 +81,7 @@ public final class DaggerCurrencyConverterComponent implements CurrencyConverter
 
   private Map<Class<?>, Provider<AndroidInjector.Factory<?>>> mapOfClassOfAndProviderOfAndroidInjectorFactoryOf(
       ) {
-    return Collections.<Class<?>, Provider<AndroidInjector.Factory<?>>>singletonMap(CurrenciesFragment.class, (Provider) currenciesFragmentSubcomponentFactoryProvider);
+    return MapBuilder.<Class<?>, Provider<AndroidInjector.Factory<?>>>newMapBuilder(2).put(CurrenciesFragment.class, (Provider) currenciesFragmentSubcomponentFactoryProvider).put(ConvertCurrencyFragment.class, (Provider) convertCurrencyFragmentSubcomponentFactoryProvider).build();
   }
 
   private DispatchingAndroidInjector<Object> dispatchingAndroidInjectorOfObject() {
@@ -88,6 +96,13 @@ public final class DaggerCurrencyConverterComponent implements CurrencyConverter
       public CurrenciesFragmentBuilderModule_ProvideCurrenciesFragment.CurrenciesFragmentSubcomponent.Factory get(
           ) {
         return new CurrenciesFragmentSubcomponentFactory(currencyConverterComponent);
+      }
+    };
+    this.convertCurrencyFragmentSubcomponentFactoryProvider = new Provider<ConvertCurrencyFragmentBuilderModule_ProvideConvertCurrencyFragment.ConvertCurrencyFragmentSubcomponent.Factory>() {
+      @Override
+      public ConvertCurrencyFragmentBuilderModule_ProvideConvertCurrencyFragment.ConvertCurrencyFragmentSubcomponent.Factory get(
+          ) {
+        return new ConvertCurrencyFragmentSubcomponentFactory(currencyConverterComponent);
       }
     };
     this.provideHttpClient$core_debugProvider = BaseModule_ProvideHttpClient$core_debugFactory.create(baseModuleParam);
@@ -147,6 +162,22 @@ public final class DaggerCurrencyConverterComponent implements CurrencyConverter
     }
   }
 
+  private static final class ConvertCurrencyFragmentSubcomponentFactory implements ConvertCurrencyFragmentBuilderModule_ProvideConvertCurrencyFragment.ConvertCurrencyFragmentSubcomponent.Factory {
+    private final DaggerCurrencyConverterComponent currencyConverterComponent;
+
+    private ConvertCurrencyFragmentSubcomponentFactory(
+        DaggerCurrencyConverterComponent currencyConverterComponent) {
+      this.currencyConverterComponent = currencyConverterComponent;
+    }
+
+    @Override
+    public ConvertCurrencyFragmentBuilderModule_ProvideConvertCurrencyFragment.ConvertCurrencyFragmentSubcomponent create(
+        ConvertCurrencyFragment arg0) {
+      Preconditions.checkNotNull(arg0);
+      return new ConvertCurrencyFragmentSubcomponentImpl(currencyConverterComponent, arg0);
+    }
+  }
+
   private static final class CurrenciesFragmentSubcomponentImpl implements CurrenciesFragmentBuilderModule_ProvideCurrenciesFragment.CurrenciesFragmentSubcomponent {
     private final DaggerCurrencyConverterComponent currencyConverterComponent;
 
@@ -185,7 +216,7 @@ public final class DaggerCurrencyConverterComponent implements CurrencyConverter
       this.provideAlbumDao$feature_currencyconverter_debugProvider = CurrenciesModule_ProvideAlbumDao$feature_currencyconverter_debugFactory.create(currenciesModuleParam, provideCurrencyConverterDatabase$feature_currencyconverter_debugProvider);
       this.provideAlbumRepository$feature_currencyconverter_debugProvider = CurrenciesModule_ProvideAlbumRepository$feature_currencyconverter_debugFactory.create(currenciesModuleParam, provideCountriesAPIService$feature_currencyconverter_debugProvider, provideAlbumDao$feature_currencyconverter_debugProvider);
       this.getCurrenciesUseCaseProvider = GetCurrenciesUseCase_Factory.create(provideAlbumRepository$feature_currencyconverter_debugProvider);
-      this.currenciesViewModelProvider = CurrenciesViewModel_Factory.create(NavManager_Factory.create(), getCurrenciesUseCaseProvider);
+      this.currenciesViewModelProvider = CurrenciesViewModel_Factory.create(getCurrenciesUseCaseProvider);
     }
 
     @Override
@@ -196,6 +227,45 @@ public final class DaggerCurrencyConverterComponent implements CurrencyConverter
     private CurrenciesFragment injectCurrenciesFragment(CurrenciesFragment instance) {
       DaggerFragment_MembersInjector.injectAndroidInjector(instance, currencyConverterComponent.dispatchingAndroidInjectorOfObject());
       CurrenciesFragment_MembersInjector.injectCurrenciesViewModelFactory(instance, viewModelFactoryOfCurrenciesViewModel());
+      return instance;
+    }
+  }
+
+  private static final class ConvertCurrencyFragmentSubcomponentImpl implements ConvertCurrencyFragmentBuilderModule_ProvideConvertCurrencyFragment.ConvertCurrencyFragmentSubcomponent {
+    private final DaggerCurrencyConverterComponent currencyConverterComponent;
+
+    private final ConvertCurrencyFragmentSubcomponentImpl convertCurrencyFragmentSubcomponentImpl = this;
+
+    private Provider<ConvertCurrencyViewModel> convertCurrencyViewModelProvider;
+
+    private ConvertCurrencyFragmentSubcomponentImpl(
+        DaggerCurrencyConverterComponent currencyConverterComponent,
+        ConvertCurrencyFragment arg0Param) {
+      this.currencyConverterComponent = currencyConverterComponent;
+
+      initialize(arg0Param);
+
+    }
+
+    private ViewModelFactory<ConvertCurrencyViewModel> viewModelFactoryOfConvertCurrencyViewModel(
+        ) {
+      return new ViewModelFactory<ConvertCurrencyViewModel>(DoubleCheck.lazy(convertCurrencyViewModelProvider));
+    }
+
+    @SuppressWarnings("unchecked")
+    private void initialize(final ConvertCurrencyFragment arg0Param) {
+      this.convertCurrencyViewModelProvider = ConvertCurrencyViewModel_Factory.create(ConvertCurrencyUseCase_Factory.create());
+    }
+
+    @Override
+    public void inject(ConvertCurrencyFragment arg0) {
+      injectConvertCurrencyFragment(arg0);
+    }
+
+    private ConvertCurrencyFragment injectConvertCurrencyFragment(
+        ConvertCurrencyFragment instance) {
+      DaggerFragment_MembersInjector.injectAndroidInjector(instance, currencyConverterComponent.dispatchingAndroidInjectorOfObject());
+      ConvertCurrencyFragment_MembersInjector.injectConvertViewModelFactory(instance, viewModelFactoryOfConvertCurrencyViewModel());
       return instance;
     }
   }

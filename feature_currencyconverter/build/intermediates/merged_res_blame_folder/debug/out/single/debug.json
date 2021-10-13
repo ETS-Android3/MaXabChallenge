@@ -60,6 +60,10 @@
         "source": "/home/mosaab/AndroidStudioProjects/MaXabChallenge/feature_currencyconverter/src/main/res/drawable/ic_image.xml"
     },
     {
+        "merged": "/home/mosaab/AndroidStudioProjects/MaXabChallenge/feature_currencyconverter/build/intermediates/res/merged/debug/layout_fragment_convert_currency.xml.flat",
+        "source": "/home/mosaab/AndroidStudioProjects/MaXabChallenge/feature_currencyconverter/src/main/res/layout/fragment_convert_currency.xml"
+    },
+    {
         "merged": "/home/mosaab/AndroidStudioProjects/MaXabChallenge/feature_currencyconverter/build/intermediates/res/merged/debug/navigation_feature_currency_converter_nav_graph.xml.flat",
         "source": "/home/mosaab/AndroidStudioProjects/MaXabChallenge/feature_currencyconverter/src/main/res/navigation/feature_currency_converter_nav_graph.xml"
     },

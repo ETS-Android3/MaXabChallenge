@@ -15,8 +15,6 @@ class NavHostActivity : BaseActivity() {
 
     private val binding: ActivityNavHostBinding by viewBinding()
 
-    private val navManager: NavManager by lazy { NavManager() }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         DaggerAppComponent
             .builder()
@@ -31,7 +29,7 @@ class NavHostActivity : BaseActivity() {
     }
 
     private fun initNavManager() {
-        navManager.setOnNavEvent {
+        NavManager.setOnNavEvent {
 
             val navHostFragment = supportFragmentManager.findFragmentById(R.id.navHostFragment)
             val currentFragment = navHostFragment?.childFragmentManager?.fragments?.get(0)
