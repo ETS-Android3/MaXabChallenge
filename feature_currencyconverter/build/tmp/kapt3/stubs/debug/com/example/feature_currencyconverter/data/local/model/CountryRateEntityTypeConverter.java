@@ -11,9 +11,6 @@ public final class CountryRateEntityTypeConverter {
         super();
     }
     
-    /**
-     * return key1->value1||key2->value2||key3->value3
-     */
     @org.jetbrains.annotations.NotNull()
     @androidx.room.TypeConverter()
     public final java.lang.String mapToString(@org.jetbrains.annotations.NotNull()
@@ -21,12 +18,6 @@ public final class CountryRateEntityTypeConverter {
         return null;
     }
     
-    /**
-     * return map of String, String
-     *       "key1": "value1"
-     *       "key2": "value2"
-     *       "key3": "value3"
-     */
     @org.jetbrains.annotations.NotNull()
     @androidx.room.TypeConverter()
     public final java.util.Map<java.lang.String, java.lang.Double> stringToMap(@org.jetbrains.annotations.NotNull()
