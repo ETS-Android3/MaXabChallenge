@@ -2,9 +2,9 @@ package com.example.feature_currencyconverter.data.local.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import androidx.room.TypeConverter
 import androidx.room.TypeConverters
 import com.example.core.base.extension.round
+import com.example.feature_currencyconverter.data.local.model.converter.CountryRateEntityTypeConverter
 import com.example.feature_currencyconverter.domain.model.Country
 import com.example.feature_currencyconverter.domain.model.CountryRate
 
@@ -32,23 +32,3 @@ internal fun Map<String, Double>.toDomainModel() = map {
     }.toMutableList()
 
 
-internal class CountryRateEntityTypeConverter {
-    private val KEY_VALUE_SEPARATOR = "="
-    private val ENTRY_SEPARATOR = "||"
-
-    @TypeConverter
-    fun mapToString(map: Map<String?, Double>): String {
-        return map.entries.joinToString(separator = ENTRY_SEPARATOR) {
-            "${it.key}$KEY_VALUE_SEPARATOR${it.value}"
-        }
-    }
-
-    @TypeConverter
-    fun stringToMap(string: String): Map<String, Double> {
-        return string.split(ENTRY_SEPARATOR).map {
-            val (key, value) = it.split(KEY_VALUE_SEPARATOR)
-            key to value
-        }.toMap()
-            .mapValues { it.value.toDouble() }
-    }
-}

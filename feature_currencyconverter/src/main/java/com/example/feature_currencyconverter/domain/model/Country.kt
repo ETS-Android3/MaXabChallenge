@@ -4,6 +4,3 @@ internal data class Country(
     val selectedCountry: String? = null,
     val rates: MutableList<CountryRate> = mutableListOf()
 )
-
-
-

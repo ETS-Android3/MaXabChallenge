@@ -42,6 +42,10 @@ abstract class BaseViewModel<ViewState : BaseViewState, ViewAction : BaseAction>
         onLoadData()
     }
 
+    fun postLasState() {
+        stateMutableLiveData.value = state
+    }
+
     protected open fun onLoadData() {}
 
     protected abstract fun onReduceState(viewAction: ViewAction): ViewState

@@ -9,6 +9,7 @@ import com.example.feature_currencyconverter.domain.model.CountryRate
 import com.example.feature_currencyconverter.domain.usecase.GetCurrenciesUseCase
 import com.example.feature_currencyconverter.presentation.currencies.ui.fragment.CurrenciesFragmentDirections
 import com.example.core.base.presentation.navigation.NavManager
+import com.example.feature_currencyconverter.domain.model.toCountryRateConverter
 import com.example.feature_currencyconverter.presentation.convert.model.CountryRateConverter
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -30,6 +31,11 @@ internal class CurrenciesViewModel @Inject constructor(
         is Action.LoadingFailure -> state.copy(
             isLoading = false,
             isError = true,
+            country = null
+        )
+        Action.Loading -> state.copy(
+            isLoading = true,
+            isError = false,
             country = null
         )
     }
@@ -59,21 +65,15 @@ internal class CurrenciesViewModel @Inject constructor(
     fun navigateToConvertCurrency(selectedCountry: CountryRate) {
         if (selectedCountry.iso != stateLiveData.value?.country?.selectedCountry) {
             val navDirections = CurrenciesFragmentDirections
-                .actionCurrenciesFragmentToConvertFragment(buildCountryRateConverterModel(selectedCountry))
+                .actionCurrenciesFragmentToConvertFragment(buildCountryRateConverter(selectedCountry))
             NavManager.navigate(navDirections)
         }
     }
 
-    private fun buildCountryRateConverterModel(selectedCountry: CountryRate): CountryRateConverter {
+    private fun buildCountryRateConverter(selectedCountry: CountryRate): CountryRateConverter {
         val baseCountryISOCode = stateLiveData.value?.country?.selectedCountry
         val baseCountry = stateLiveData.value?.country?.rates?.find { it.iso == baseCountryISOCode }
-
-        return CountryRateConverter(
-            baseCountry?.iso,
-            baseCountry?.rate,
-            selectedCountry.iso,
-            selectedCountry.rate
-        )
+        return baseCountry?.toCountryRateConverter(selectedCountry)!!
     }
 
     internal data class ViewState(
@@ -85,7 +85,12 @@ internal class CurrenciesViewModel @Inject constructor(
     internal sealed interface Action : BaseAction {
         class LoadingSuccess(val country: Country) : Action
         object LoadingFailure : Action
+        object Loading : Action
     }
 
+    init {
+        sendAction(Action.Loading)
+        loadData()
+    }
 
 }

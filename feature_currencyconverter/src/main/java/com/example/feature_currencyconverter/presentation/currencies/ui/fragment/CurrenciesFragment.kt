@@ -74,8 +74,7 @@ class CurrenciesFragment : BaseFragment() {
     override fun init() {
         initCurrenciesRv()
         observe(currenciesViewModel.stateLiveData, stateObserver)
-        currenciesViewModel.loadData()
-
+        currenciesViewModel.postLasState()
     }
 
     override fun onViewClicked() {
