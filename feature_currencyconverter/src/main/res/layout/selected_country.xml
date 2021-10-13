@@ -8,13 +8,13 @@
 
     <TextView
         android:id="@+id/countryCurrencyTv"
-        style="@style/textViewStyle"
+        style="@style/boldTextViewStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/dimen_12dp"
         android:layout_marginTop="@dimen/dimen_16dp"
         android:layout_marginBottom="@dimen/dimen_16dp"
-        android:textSize="@dimen/dimen_16sp"
+        android:textSize="@dimen/dimen_18sp"
         android:background="?viewBackground"
         android:padding="@dimen/dimen_8dp"
         app:layout_constraintBottom_toBottomOf="parent"

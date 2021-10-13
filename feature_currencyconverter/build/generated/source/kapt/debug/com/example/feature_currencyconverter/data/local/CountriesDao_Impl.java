@@ -137,60 +137,6 @@ public final class CountriesDao_Impl implements CountriesDao {
     }, continuation);
   }
 
-  @Override
-  public Object getCountry(final Continuation<? super CountryEntity> continuation) {
-    final String _sql = "SELECT * FROM countries";
-    final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 0);
-    final CancellationSignal _cancellationSignal = DBUtil.createCancellationSignal();
-    return CoroutinesRoom.execute(__db, false, _cancellationSignal, new Callable<CountryEntity>() {
-      @Override
-      public CountryEntity call() throws Exception {
-        final Cursor _cursor = DBUtil.query(__db, _statement, false, null);
-        try {
-          final int _cursorIndexOfId = CursorUtil.getColumnIndexOrThrow(_cursor, "id");
-          final int _cursorIndexOfTimestamp = CursorUtil.getColumnIndexOrThrow(_cursor, "timestamp");
-          final int _cursorIndexOfBase = CursorUtil.getColumnIndexOrThrow(_cursor, "base");
-          final int _cursorIndexOfDate = CursorUtil.getColumnIndexOrThrow(_cursor, "date");
-          final int _cursorIndexOfRates = CursorUtil.getColumnIndexOrThrow(_cursor, "rates");
-          final CountryEntity _result;
-          if(_cursor.moveToFirst()) {
-            final int _tmpId;
-            _tmpId = _cursor.getInt(_cursorIndexOfId);
-            final long _tmpTimestamp;
-            _tmpTimestamp = _cursor.getLong(_cursorIndexOfTimestamp);
-            final String _tmpBase;
-            if (_cursor.isNull(_cursorIndexOfBase)) {
-              _tmpBase = null;
-            } else {
-              _tmpBase = _cursor.getString(_cursorIndexOfBase);
-            }
-            final String _tmpDate;
-            if (_cursor.isNull(_cursorIndexOfDate)) {
-              _tmpDate = null;
-            } else {
-              _tmpDate = _cursor.getString(_cursorIndexOfDate);
-            }
-            final Map<String, Double> _tmpRates;
-            final String _tmp;
-            if (_cursor.isNull(_cursorIndexOfRates)) {
-              _tmp = null;
-            } else {
-              _tmp = _cursor.getString(_cursorIndexOfRates);
-            }
-            _tmpRates = __countryRateEntityTypeConverter.stringToMap(_tmp);
-            _result = new CountryEntity(_tmpId,_tmpTimestamp,_tmpBase,_tmpDate,_tmpRates);
-          } else {
-            _result = null;
-          }
-          return _result;
-        } finally {
-          _cursor.close();
-          _statement.release();
-        }
-      }
-    }, continuation);
-  }
-
   public static List<Class<?>> getRequiredConverters() {
     return Collections.emptyList();
   }

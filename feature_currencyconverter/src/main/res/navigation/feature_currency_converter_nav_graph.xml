@@ -11,7 +11,7 @@
 
 
         <action
-            android:id="@+id/action_currenciesConverterFragment_to_convertCurrencyFragment"
+            android:id="@+id/action_currenciesFragment_to_convertFragment"
             app:destination="@id/convertCurrencyFragment" />
     </fragment>
 

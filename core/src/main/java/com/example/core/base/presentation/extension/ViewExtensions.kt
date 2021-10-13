@@ -47,6 +47,14 @@ var View.visible
         visibility = if (value) VISIBLE else GONE
     }
 
+fun View.handleVisibility(visibilityState: Boolean) {
+    if (visibilityState)
+       show()
+    else
+       hide(true)
+
+}
+
 fun View.hide(gone: Boolean = true) {
     visibility = if (gone) GONE else INVISIBLE
 }

@@ -1,5 +1,9 @@
 [
     {
+        "merged": "/home/mosaab/AndroidStudioProjects/MaXabChallenge/feature_currencyconverter/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/item_loading.xml",
+        "source": "/home/mosaab/AndroidStudioProjects/MaXabChallenge/feature_currencyconverter/src/main/res/layout/item_loading.xml"
+    },
+    {
         "merged": "/home/mosaab/AndroidStudioProjects/MaXabChallenge/feature_currencyconverter/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/currency_item.xml",
         "source": "/home/mosaab/AndroidStudioProjects/MaXabChallenge/feature_currencyconverter/src/main/res/layout/currency_item.xml"
     },
@@ -10,6 +14,10 @@
     {
         "merged": "/home/mosaab/AndroidStudioProjects/MaXabChallenge/feature_currencyconverter/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/selected_country.xml",
         "source": "/home/mosaab/AndroidStudioProjects/MaXabChallenge/feature_currencyconverter/src/main/res/layout/selected_country.xml"
+    },
+    {
+        "merged": "/home/mosaab/AndroidStudioProjects/MaXabChallenge/feature_currencyconverter/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/item_error_message.xml",
+        "source": "/home/mosaab/AndroidStudioProjects/MaXabChallenge/feature_currencyconverter/src/main/res/layout/item_error_message.xml"
     },
     {
         "merged": "/home/mosaab/AndroidStudioProjects/MaXabChallenge/feature_currencyconverter/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_currencies.xml",

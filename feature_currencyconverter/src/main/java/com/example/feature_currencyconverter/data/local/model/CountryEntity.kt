@@ -18,10 +18,10 @@ internal data class CountryEntity(
     val rates: Map<String, Double>? = null
 )
 
-internal fun CountryEntity.toDomainModel() =
+internal fun CountryEntity?.toDomainModel() =
     Country(
-        selectedCountry = this.base,
-        rates = this.rates?.toDomainModel()?: mutableListOf()
+        selectedCountry = this?.base,
+        rates = this?.rates?.toDomainModel()?: mutableListOf()
     )
 
 internal fun Map<String, Double>.toDomainModel() = map {
@@ -37,7 +37,7 @@ internal class CountryRateEntityTypeConverter {
     private val ENTRY_SEPARATOR = "||"
 
     @TypeConverter
-    fun mapToString(map: Map<String, Double>): String {
+    fun mapToString(map: Map<String?, Double>): String {
         return map.entries.joinToString(separator = ENTRY_SEPARATOR) {
             "${it.key}$KEY_VALUE_SEPARATOR${it.value}"
         }
@@ -48,8 +48,7 @@ internal class CountryRateEntityTypeConverter {
         return string.split(ENTRY_SEPARATOR).map {
             val (key, value) = it.split(KEY_VALUE_SEPARATOR)
             key to value
-        }
-            .toMap()
+        }.toMap()
             .mapValues { it.value.toDouble() }
     }
 }

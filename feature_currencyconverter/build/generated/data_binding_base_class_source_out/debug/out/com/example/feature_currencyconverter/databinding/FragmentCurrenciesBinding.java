@@ -19,14 +19,23 @@ public final class FragmentCurrenciesBinding implements ViewBinding {
   private final ConstraintLayout rootView;
 
   @NonNull
+  public final ItemErrorMessageBinding errorRootView;
+
+  @NonNull
+  public final ItemLoadingBinding progressRootView;
+
+  @NonNull
   public final RecyclerView recyclerView;
 
   @NonNull
   public final SelectedCountryBinding selectedCountryRootView;
 
   private FragmentCurrenciesBinding(@NonNull ConstraintLayout rootView,
+      @NonNull ItemErrorMessageBinding errorRootView, @NonNull ItemLoadingBinding progressRootView,
       @NonNull RecyclerView recyclerView, @NonNull SelectedCountryBinding selectedCountryRootView) {
     this.rootView = rootView;
+    this.errorRootView = errorRootView;
+    this.progressRootView = progressRootView;
     this.recyclerView = recyclerView;
     this.selectedCountryRootView = selectedCountryRootView;
   }
@@ -58,6 +67,20 @@ public final class FragmentCurrenciesBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
+      id = R.id.errorRootView;
+      View errorRootView = rootView.findViewById(id);
+      if (errorRootView == null) {
+        break missingId;
+      }
+      ItemErrorMessageBinding binding_errorRootView = ItemErrorMessageBinding.bind(errorRootView);
+
+      id = R.id.progressRootView;
+      View progressRootView = rootView.findViewById(id);
+      if (progressRootView == null) {
+        break missingId;
+      }
+      ItemLoadingBinding binding_progressRootView = ItemLoadingBinding.bind(progressRootView);
+
       id = R.id.recyclerView;
       RecyclerView recyclerView = rootView.findViewById(id);
       if (recyclerView == null) {
@@ -71,8 +94,8 @@ public final class FragmentCurrenciesBinding implements ViewBinding {
       }
       SelectedCountryBinding binding_selectedCountryRootView = SelectedCountryBinding.bind(selectedCountryRootView);
 
-      return new FragmentCurrenciesBinding((ConstraintLayout) rootView, recyclerView,
-          binding_selectedCountryRootView);
+      return new FragmentCurrenciesBinding((ConstraintLayout) rootView, binding_errorRootView,
+          binding_progressRootView, recyclerView, binding_selectedCountryRootView);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

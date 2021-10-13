@@ -17,69 +17,74 @@ internal class CurrenciesViewModel @Inject constructor(
     private val getCurrenciesUseCase: GetCurrenciesUseCase
 ) : BaseViewModel<CurrenciesViewModel.ViewState, CurrenciesViewModel.Action>(ViewState()) {
 
-
     override fun onLoadData() {
         getCurrenciesList()
     }
 
     override fun onReduceState(viewAction: Action) = when (viewAction) {
-        is Action.AlbumListLoadingSuccess -> state.copy(
+        is Action.LoadingSuccess -> state.copy(
             isLoading = false,
             isError = false,
-            albums = viewAction.albums
+            country = viewAction.country
         )
-        is Action.AlbumListLoadingFailure -> state.copy(
+        is Action.LoadingFailure -> state.copy(
             isLoading = false,
             isError = true,
-            albums = null
+            country = null
         )
     }
 
     private fun getCurrenciesList() {
         viewModelScope.launch {
             getCurrenciesUseCase.execute().also { result ->
-                val action = when (result) {
-                    is GetCurrenciesUseCase.Result.Success ->
-                        if (result.data == null) {
-                            Action.AlbumListLoadingFailure
-                        } else {
-                            Action.AlbumListLoadingSuccess(result.data)
-                        }
-
-                    is GetCurrenciesUseCase.Result.Error ->
-                        Action.AlbumListLoadingFailure
-                }
+                val action = handleResultState(result)
                 sendAction(action)
             }
         }
     }
 
+    private fun handleResultState(result: GetCurrenciesUseCase.Result) =
+        when (result) {
+            is GetCurrenciesUseCase.Result.Success ->
+                if (result.data == null || result.data.rates.isEmpty()) {
+                    Action.LoadingFailure
+                } else {
+                    Action.LoadingSuccess(result.data)
+                }
+
+            is GetCurrenciesUseCase.Result.Error ->
+                Action.LoadingFailure
+        }
+
     fun navigateToConvertCurrency(selectedCountry: CountryRate) {
-        val navDirections = CurrenciesFragmentDirections
-            .actionCurrenciesConverterFragmentToConvertCurrencyFragment(buildCountryRateConverterModel(selectedCountry))
-        NavManager.navigate(navDirections)
+        if (selectedCountry.iso != stateLiveData.value?.country?.selectedCountry) {
+            val navDirections = CurrenciesFragmentDirections
+                .actionCurrenciesFragmentToConvertFragment(buildCountryRateConverterModel(selectedCountry))
+            NavManager.navigate(navDirections)
+        }
     }
 
     private fun buildCountryRateConverterModel(selectedCountry: CountryRate): CountryRateConverter {
-        val baseCountryISOCode = stateLiveData.value?.albums?.selectedCountry
-        val baseCountry = stateLiveData.value?.albums?.rates?.find { it.iso == baseCountryISOCode }
+        val baseCountryISOCode = stateLiveData.value?.country?.selectedCountry
+        val baseCountry = stateLiveData.value?.country?.rates?.find { it.iso == baseCountryISOCode }
 
-        return CountryRateConverter(baseCountry?.iso,
+        return CountryRateConverter(
+            baseCountry?.iso,
             baseCountry?.rate,
             selectedCountry.iso,
-            selectedCountry.rate)
+            selectedCountry.rate
+        )
     }
-
 
     internal data class ViewState(
         val isLoading: Boolean = true,
         val isError: Boolean = false,
-        val albums: Country? = null
+        val country: Country? = null
     ) : BaseViewState
 
     internal sealed interface Action : BaseAction {
-        class AlbumListLoadingSuccess(val albums: Country) : Action
-        object AlbumListLoadingFailure : Action
+        class LoadingSuccess(val country: Country) : Action
+        object LoadingFailure : Action
     }
 
 

@@ -5,4 +5,10 @@
     <string name="title_feature_currencyconverter">Currency Converter</string>
 
 
+
+    <string name="opps"> Opps </string>
+    <string name="error_desc"> Something went wrong !</string>
+    <string name="retry"> Retry </string>
+    <string name="empty">there\'s no items available now </string>
+
 </resources>

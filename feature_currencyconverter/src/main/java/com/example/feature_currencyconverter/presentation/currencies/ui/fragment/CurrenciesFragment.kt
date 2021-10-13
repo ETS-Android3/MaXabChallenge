@@ -9,7 +9,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.core.base.presentation.activity.BaseActivity
-import com.example.core.base.presentation.extension.observe
+import com.example.core.base.presentation.extension.*
 import com.example.core.base.presentation.fragment.BaseFragment
 import com.example.core.di.ViewModelFactory
 import com.example.core.di.utils.InjectUtils
@@ -25,19 +25,17 @@ import javax.inject.Inject
 class CurrenciesFragment : BaseFragment() {
     private lateinit var binding: FragmentCurrenciesBinding
 
-    private val currenciesAdapter by lazy{
-        CurrenciesAdapter{
+    private val currenciesAdapter by lazy {
+        CurrenciesAdapter {
             onCountrySelected(it)
         }
     }
-
 
     @Inject
     internal lateinit var currenciesViewModelFactory: ViewModelFactory<CurrenciesViewModel>
     private val currenciesViewModel by lazy {
         ViewModelProvider(requireActivity(), currenciesViewModelFactory)[CurrenciesViewModel::class.java]
     }
-
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -59,10 +57,11 @@ class CurrenciesFragment : BaseFragment() {
     }
 
     private val stateObserver = Observer<CurrenciesViewModel.ViewState> {
-        setData(it.albums)
-       /* binding.progressBar.visible = it.isLoading
-        binding.errorAnimation.visible = it.isError*/
+        setData(it.country)
+        binding.progressRootView.rootView.handleVisibility(it.isLoading)
+        binding.errorRootView.rootView.handleVisibility(it.isError)
     }
+
 
     private fun setData(country: Country?) {
         country?.let {
@@ -76,6 +75,13 @@ class CurrenciesFragment : BaseFragment() {
         initCurrenciesRv()
         observe(currenciesViewModel.stateLiveData, stateObserver)
         currenciesViewModel.loadData()
+
+    }
+
+    override fun onViewClicked() {
+        binding.errorRootView.btnRetry.setOnClickListener {
+            currenciesViewModel.loadData()
+        }
     }
 
     private fun initCurrenciesRv() {
