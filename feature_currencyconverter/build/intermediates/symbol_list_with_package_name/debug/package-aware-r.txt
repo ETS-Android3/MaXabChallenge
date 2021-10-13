@@ -1,0 +1,26 @@
+com.example.feature_currencyconverter
+color black
+color purple_200
+color purple_500
+color purple_700
+color teal_200
+color teal_700
+color white
+dimen space_medium
+drawable ic_image
+drawable ic_launcher_background
+drawable ic_launcher_foreground
+drawable ic_round_error_outline
+id countryCurrencyTv
+id countryIsoCodeTv
+id currenciesConverterFragment
+id recyclerView
+id selectedCountryRootView
+layout currency_item
+layout fragment_currencies
+layout selected_country
+mipmap ic_launcher
+mipmap ic_launcher_round
+navigation feature_currency_converter_nav_graph
+string data_not_found
+style Theme_CleanArchWithMultiModuleShowCase
