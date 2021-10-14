@@ -18,17 +18,12 @@ anytime.
 I started working on it by migrating gradle files to kotlin dsl then modeling the project to multi modules ( module by feature ) ,
 applied clean architecture with MVVM design pattern used Coroutines to handle heavy operations on the background thread,
 Dagger 2 for dependency injection,Room for caching currencies,
-enabled proguard for obfuscating and securing the code base , 
 unit testing all the feature using (JUnit, Mockk),
 used different branches to implement and refactor the features to avoid conflicts.
 
 
 ## Screenshot
 <img src="https://github.com/MosaabAhmedMohamed/MaXabChallenge/blob/master/maxab_app.jpeg" width="200" height="400"></a>
-
-## Download
-[APK](https://github.com/MosaabAhmedMohamed/MaXabChallenge/blob/master/maxab_app.jpeg)
-
 
 ## Specifications
 - Caching currencies.
