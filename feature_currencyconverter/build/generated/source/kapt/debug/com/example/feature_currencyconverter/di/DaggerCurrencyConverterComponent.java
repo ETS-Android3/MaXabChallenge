@@ -15,6 +15,8 @@ import com.example.feature_currencyconverter.data.local.CurrencyConverterDatabas
 import com.example.feature_currencyconverter.data.remote.service.CountriesAPIService;
 import com.example.feature_currencyconverter.domain.repository.CurrenciesRepository;
 import com.example.feature_currencyconverter.domain.usecase.ConvertCurrencyUseCase_Factory;
+import com.example.feature_currencyconverter.domain.usecase.GetBaseCurrencyUseCase;
+import com.example.feature_currencyconverter.domain.usecase.GetBaseCurrencyUseCase_Factory;
 import com.example.feature_currencyconverter.domain.usecase.GetCurrenciesUseCase;
 import com.example.feature_currencyconverter.domain.usecase.GetCurrenciesUseCase_Factory;
 import com.example.feature_currencyconverter.presentation.convert.di.ConvertCurrencyFragmentBuilderModule_ProvideConvertCurrencyFragment;
@@ -193,6 +195,8 @@ public final class DaggerCurrencyConverterComponent implements CurrencyConverter
 
     private Provider<GetCurrenciesUseCase> getCurrenciesUseCaseProvider;
 
+    private Provider<GetBaseCurrencyUseCase> getBaseCurrencyUseCaseProvider;
+
     private Provider<CurrenciesViewModel> currenciesViewModelProvider;
 
     private CurrenciesFragmentSubcomponentImpl(
@@ -216,7 +220,8 @@ public final class DaggerCurrencyConverterComponent implements CurrencyConverter
       this.provideAlbumDao$feature_currencyconverter_debugProvider = CurrenciesModule_ProvideAlbumDao$feature_currencyconverter_debugFactory.create(currenciesModuleParam, provideCurrencyConverterDatabase$feature_currencyconverter_debugProvider);
       this.provideAlbumRepository$feature_currencyconverter_debugProvider = CurrenciesModule_ProvideAlbumRepository$feature_currencyconverter_debugFactory.create(currenciesModuleParam, provideCountriesAPIService$feature_currencyconverter_debugProvider, provideAlbumDao$feature_currencyconverter_debugProvider);
       this.getCurrenciesUseCaseProvider = GetCurrenciesUseCase_Factory.create(provideAlbumRepository$feature_currencyconverter_debugProvider);
-      this.currenciesViewModelProvider = CurrenciesViewModel_Factory.create(getCurrenciesUseCaseProvider);
+      this.getBaseCurrencyUseCaseProvider = GetBaseCurrencyUseCase_Factory.create(provideAlbumRepository$feature_currencyconverter_debugProvider);
+      this.currenciesViewModelProvider = CurrenciesViewModel_Factory.create(getCurrenciesUseCaseProvider, getBaseCurrencyUseCaseProvider);
     }
 
     @Override

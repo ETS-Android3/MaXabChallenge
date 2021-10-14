@@ -1,22 +1,25 @@
 package com.example.feature_currencyconverter.presentation.currencies.viewmodel
 
 import androidx.lifecycle.viewModelScope
+import com.example.core.base.presentation.navigation.NavManager
 import com.example.core.base.presentation.viewmodel.BaseAction
 import com.example.core.base.presentation.viewmodel.BaseViewModel
 import com.example.core.base.presentation.viewmodel.BaseViewState
 import com.example.feature_currencyconverter.domain.model.Country
 import com.example.feature_currencyconverter.domain.model.CountryRate
-import com.example.feature_currencyconverter.domain.usecase.GetCurrenciesUseCase
-import com.example.feature_currencyconverter.presentation.currencies.ui.fragment.CurrenciesFragmentDirections
-import com.example.core.base.presentation.navigation.NavManager
 import com.example.feature_currencyconverter.domain.model.toCountryRateConverter
-import com.example.feature_currencyconverter.presentation.convert.model.CountryRateConverter
+import com.example.feature_currencyconverter.domain.usecase.GetCurrenciesUseCase
+import com.example.feature_currencyconverter.domain.usecase.GetBaseCurrencyUseCase
+import com.example.feature_currencyconverter.presentation.currencies.ui.fragment.CurrenciesFragmentDirections
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 internal class CurrenciesViewModel @Inject constructor(
-    private val getCurrenciesUseCase: GetCurrenciesUseCase
+    private val getCurrenciesUseCase: GetCurrenciesUseCase,
+    private val getBaseCurrencyUseCase: GetBaseCurrencyUseCase
 ) : BaseViewModel<CurrenciesViewModel.ViewState, CurrenciesViewModel.Action>(ViewState()) {
+
+    var baseCountry: CountryRate? = null
 
     override fun onLoadData() {
         getCurrenciesList()
@@ -62,21 +65,42 @@ internal class CurrenciesViewModel @Inject constructor(
                 Action.LoadingFailure
         }
 
+    private suspend fun getBaseCountry(): CountryRate? {
+        return if (baseCountry != null) {
+            baseCountry
+        } else {
+            getBaseCurrencyUseCase.execute().also { result ->
+                when (result) {
+                    is GetBaseCurrencyUseCase.Result.Error -> sendAction(Action.LoadingFailure)
+                    is GetBaseCurrencyUseCase.Result.Success -> {
+                        baseCountry = result.data
+
+                    }
+                }
+            }
+            baseCountry
+        }
+    }
+
     fun navigateToConvertCurrency(selectedCountry: CountryRate) {
-        if (selectedCountry.iso != stateLiveData.value?.country?.selectedCountry) {
-            buildCountryRateConverter(selectedCountry)?.let {
-                val navDirections = CurrenciesFragmentDirections
-                    .actionCurrenciesFragmentToConvertFragment(it)
-                NavManager.navigate(navDirections)
+        viewModelScope.launch {
+            getBaseCountry()?.let { baseCountry ->
+                if (selectedCountry.iso != baseCountry.iso) {
+                    val navDirections = CurrenciesFragmentDirections
+                        .actionCurrenciesFragmentToConvertFragment(
+                            buildCountryRateConverter(baseCountry, selectedCountry)
+                        )
+                    NavManager.navigate(navDirections)
+                }
             }
         }
     }
 
-    private fun buildCountryRateConverter(selectedCountry: CountryRate): CountryRateConverter? {
-        val baseCountryISOCode = stateLiveData.value?.country?.selectedCountry
-        val baseCountry = stateLiveData.value?.country?.rates?.find { it.iso == baseCountryISOCode }
-        return baseCountry?.toCountryRateConverter(selectedCountry)
-    }
+    private fun buildCountryRateConverter(
+        baseCountry: CountryRate?,
+        selectedCountry: CountryRate
+    ) =
+        baseCountry?.toCountryRateConverter(selectedCountry)!!
 
     internal data class ViewState(
         val isLoading: Boolean = true,
