@@ -64,16 +64,18 @@ internal class CurrenciesViewModel @Inject constructor(
 
     fun navigateToConvertCurrency(selectedCountry: CountryRate) {
         if (selectedCountry.iso != stateLiveData.value?.country?.selectedCountry) {
-            val navDirections = CurrenciesFragmentDirections
-                .actionCurrenciesFragmentToConvertFragment(buildCountryRateConverter(selectedCountry))
-            NavManager.navigate(navDirections)
+            buildCountryRateConverter(selectedCountry)?.let {
+                val navDirections = CurrenciesFragmentDirections
+                    .actionCurrenciesFragmentToConvertFragment(it)
+                NavManager.navigate(navDirections)
+            }
         }
     }
 
-    private fun buildCountryRateConverter(selectedCountry: CountryRate): CountryRateConverter {
+    private fun buildCountryRateConverter(selectedCountry: CountryRate): CountryRateConverter? {
         val baseCountryISOCode = stateLiveData.value?.country?.selectedCountry
         val baseCountry = stateLiveData.value?.country?.rates?.find { it.iso == baseCountryISOCode }
-        return baseCountry?.toCountryRateConverter(selectedCountry)!!
+        return baseCountry?.toCountryRateConverter(selectedCountry)
     }
 
     internal data class ViewState(
