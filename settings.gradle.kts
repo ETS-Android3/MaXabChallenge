@@ -10,7 +10,8 @@ enableFeaturePreview("ONE_LOCKFILE_PER_PROJECT")
 include(
     ":app",
     ":feature_currencyconverter",
-    ":core"
+    ":core",
+    ":library_test_utils"
 )
 
 // Gradle plugins are added via plugin management, not the classpath
@@ -178,3 +179,4 @@ dependencyResolutionManagement {
         }
     }
 }
+include(":library_test_utils")

@@ -54,7 +54,7 @@ dependencies {
     api(libs.bundles.room)
     kapt(libs.room.compiler)
 
+    testImplementation(project(ModuleDependency.LIBRARY_TEST_UTILS))
     testImplementation(libs.bundles.test)
-
     testRuntimeOnly(libs.junit.jupiter.engine)
 }

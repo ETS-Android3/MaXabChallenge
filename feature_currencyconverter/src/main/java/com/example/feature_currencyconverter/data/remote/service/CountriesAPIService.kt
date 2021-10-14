@@ -10,6 +10,6 @@ internal interface CountriesAPIService {
     @POST("/latest")
     suspend fun getCountries(
         @Query("format") format: Int = 1
-    ): CountriesResponse
+    ): CountriesResponse?
 
 }

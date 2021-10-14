@@ -19,7 +19,7 @@ internal class GetBaseCurrencyUseCase @Inject constructor(
         return try {
             Result.Success(
                 currenciesRepository.getBaseCurrency())
-        } catch (e: IOException) {
+        } catch (e: Exception) {
             Result.Error(e)
         }
     }
