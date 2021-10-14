@@ -11,4 +11,9 @@ object DomainFixtures {
     ): Country = Country(selectedCountry, rates)
 
 
+    internal fun getRates(): MutableList<CountryRate> {
+
+      return  mutableListOf(CountryRate("EUR",15.0),CountryRate("EGP",1.0))
+
+    }
 }
