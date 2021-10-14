@@ -10,9 +10,9 @@ import com.example.core.di.module.BaseModule;
 import com.example.core.di.module.BaseModule_ProvideContextFactory;
 import com.example.core.di.module.BaseModule_ProvideHttpClient$core_debugFactory;
 import com.example.core.di.module.BaseModule_ProvideRetrofitBuilderFactory;
-import com.example.feature_currencyconverter.data.local.CountriesDao;
+import com.example.feature_currencyconverter.data.local.CurrenciesDao;
 import com.example.feature_currencyconverter.data.local.CurrencyConverterDatabase;
-import com.example.feature_currencyconverter.data.remote.service.CountriesAPIService;
+import com.example.feature_currencyconverter.data.remote.service.CurrenciesAPIService;
 import com.example.feature_currencyconverter.domain.repository.CurrenciesRepository;
 import com.example.feature_currencyconverter.domain.usecase.ConvertCurrencyUseCase_Factory;
 import com.example.feature_currencyconverter.domain.usecase.GetBaseCurrencyUseCase;
@@ -185,11 +185,11 @@ public final class DaggerCurrencyConverterComponent implements CurrencyConverter
 
     private final CurrenciesFragmentSubcomponentImpl currenciesFragmentSubcomponentImpl = this;
 
-    private Provider<CountriesAPIService> provideCountriesAPIService$feature_currencyconverter_debugProvider;
+    private Provider<CurrenciesAPIService> provideCountriesAPIService$feature_currencyconverter_debugProvider;
 
     private Provider<CurrencyConverterDatabase> provideCurrencyConverterDatabase$feature_currencyconverter_debugProvider;
 
-    private Provider<CountriesDao> provideAlbumDao$feature_currencyconverter_debugProvider;
+    private Provider<CurrenciesDao> provideAlbumDao$feature_currencyconverter_debugProvider;
 
     private Provider<CurrenciesRepository> provideAlbumRepository$feature_currencyconverter_debugProvider;
 

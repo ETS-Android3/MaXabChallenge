@@ -30,21 +30,21 @@ import java.util.Set;
 
 @SuppressWarnings({"unchecked", "deprecation"})
 public final class CurrencyConverterDatabase_Impl extends CurrencyConverterDatabase {
-  private volatile CountriesDao _countriesDao;
+  private volatile CurrenciesDao _currenciesDao;
 
   @Override
   protected SupportSQLiteOpenHelper createOpenHelper(DatabaseConfiguration configuration) {
-    final SupportSQLiteOpenHelper.Callback _openCallback = new RoomOpenHelper(configuration, new RoomOpenHelper.Delegate(1) {
+    final SupportSQLiteOpenHelper.Callback _openCallback = new RoomOpenHelper(configuration, new RoomOpenHelper.Delegate(2) {
       @Override
       public void createAllTables(SupportSQLiteDatabase _db) {
-        _db.execSQL("CREATE TABLE IF NOT EXISTS `countries` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `timestamp` INTEGER NOT NULL, `base` TEXT, `date` TEXT, `rates` TEXT)");
+        _db.execSQL("CREATE TABLE IF NOT EXISTS `currencies` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `timestamp` INTEGER NOT NULL, `base` TEXT, `date` TEXT, `rates` TEXT)");
         _db.execSQL("CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)");
-        _db.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '6060aad277a48e89dc0836b45f6a49bc')");
+        _db.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '7af659b270ee92a165036481d8011f44')");
       }
 
       @Override
       public void dropAllTables(SupportSQLiteDatabase _db) {
-        _db.execSQL("DROP TABLE IF EXISTS `countries`");
+        _db.execSQL("DROP TABLE IF EXISTS `currencies`");
         if (mCallbacks != null) {
           for (int _i = 0, _size = mCallbacks.size(); _i < _size; _i++) {
             mCallbacks.get(_i).onDestructiveMigration(_db);
@@ -83,24 +83,24 @@ public final class CurrencyConverterDatabase_Impl extends CurrencyConverterDatab
 
       @Override
       protected RoomOpenHelper.ValidationResult onValidateSchema(SupportSQLiteDatabase _db) {
-        final HashMap<String, TableInfo.Column> _columnsCountries = new HashMap<String, TableInfo.Column>(5);
-        _columnsCountries.put("id", new TableInfo.Column("id", "INTEGER", true, 1, null, TableInfo.CREATED_FROM_ENTITY));
-        _columnsCountries.put("timestamp", new TableInfo.Column("timestamp", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
-        _columnsCountries.put("base", new TableInfo.Column("base", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
-        _columnsCountries.put("date", new TableInfo.Column("date", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
-        _columnsCountries.put("rates", new TableInfo.Column("rates", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
-        final HashSet<TableInfo.ForeignKey> _foreignKeysCountries = new HashSet<TableInfo.ForeignKey>(0);
-        final HashSet<TableInfo.Index> _indicesCountries = new HashSet<TableInfo.Index>(0);
-        final TableInfo _infoCountries = new TableInfo("countries", _columnsCountries, _foreignKeysCountries, _indicesCountries);
-        final TableInfo _existingCountries = TableInfo.read(_db, "countries");
-        if (! _infoCountries.equals(_existingCountries)) {
-          return new RoomOpenHelper.ValidationResult(false, "countries(com.example.feature_currencyconverter.data.local.model.CountryEntity).\n"
-                  + " Expected:\n" + _infoCountries + "\n"
-                  + " Found:\n" + _existingCountries);
+        final HashMap<String, TableInfo.Column> _columnsCurrencies = new HashMap<String, TableInfo.Column>(5);
+        _columnsCurrencies.put("id", new TableInfo.Column("id", "INTEGER", true, 1, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsCurrencies.put("timestamp", new TableInfo.Column("timestamp", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsCurrencies.put("base", new TableInfo.Column("base", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsCurrencies.put("date", new TableInfo.Column("date", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsCurrencies.put("rates", new TableInfo.Column("rates", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        final HashSet<TableInfo.ForeignKey> _foreignKeysCurrencies = new HashSet<TableInfo.ForeignKey>(0);
+        final HashSet<TableInfo.Index> _indicesCurrencies = new HashSet<TableInfo.Index>(0);
+        final TableInfo _infoCurrencies = new TableInfo("currencies", _columnsCurrencies, _foreignKeysCurrencies, _indicesCurrencies);
+        final TableInfo _existingCurrencies = TableInfo.read(_db, "currencies");
+        if (! _infoCurrencies.equals(_existingCurrencies)) {
+          return new RoomOpenHelper.ValidationResult(false, "currencies(com.example.feature_currencyconverter.data.local.model.CurrencyEntity).\n"
+                  + " Expected:\n" + _infoCurrencies + "\n"
+                  + " Found:\n" + _existingCurrencies);
         }
         return new RoomOpenHelper.ValidationResult(true, null);
       }
-    }, "6060aad277a48e89dc0836b45f6a49bc", "1f96507f33d2ac5578025fc276c2560a");
+    }, "7af659b270ee92a165036481d8011f44", "76d61a82fb9dc45463ab1e261ff9cd91");
     final SupportSQLiteOpenHelper.Configuration _sqliteConfig = SupportSQLiteOpenHelper.Configuration.builder(configuration.context)
         .name(configuration.name)
         .callback(_openCallback)
@@ -113,7 +113,7 @@ public final class CurrencyConverterDatabase_Impl extends CurrencyConverterDatab
   protected InvalidationTracker createInvalidationTracker() {
     final HashMap<String, String> _shadowTablesMap = new HashMap<String, String>(0);
     HashMap<String, Set<String>> _viewTables = new HashMap<String, Set<String>>(0);
-    return new InvalidationTracker(this, _shadowTablesMap, _viewTables, "countries");
+    return new InvalidationTracker(this, _shadowTablesMap, _viewTables, "currencies");
   }
 
   @Override
@@ -122,7 +122,7 @@ public final class CurrencyConverterDatabase_Impl extends CurrencyConverterDatab
     final SupportSQLiteDatabase _db = super.getOpenHelper().getWritableDatabase();
     try {
       super.beginTransaction();
-      _db.execSQL("DELETE FROM `countries`");
+      _db.execSQL("DELETE FROM `currencies`");
       super.setTransactionSuccessful();
     } finally {
       super.endTransaction();
@@ -136,7 +136,7 @@ public final class CurrencyConverterDatabase_Impl extends CurrencyConverterDatab
   @Override
   protected Map<Class<?>, List<Class<?>>> getRequiredTypeConverters() {
     final HashMap<Class<?>, List<Class<?>>> _typeConvertersMap = new HashMap<Class<?>, List<Class<?>>>();
-    _typeConvertersMap.put(CountriesDao.class, CountriesDao_Impl.getRequiredConverters());
+    _typeConvertersMap.put(CurrenciesDao.class, CurrenciesDao_Impl.getRequiredConverters());
     return _typeConvertersMap;
   }
 
@@ -153,15 +153,15 @@ public final class CurrencyConverterDatabase_Impl extends CurrencyConverterDatab
   }
 
   @Override
-  public CountriesDao countries() {
-    if (_countriesDao != null) {
-      return _countriesDao;
+  public CurrenciesDao countries() {
+    if (_currenciesDao != null) {
+      return _currenciesDao;
     } else {
       synchronized(this) {
-        if(_countriesDao == null) {
-          _countriesDao = new CountriesDao_Impl(this);
+        if(_currenciesDao == null) {
+          _currenciesDao = new CurrenciesDao_Impl(this);
         }
-        return _countriesDao;
+        return _currenciesDao;
       }
     }
   }

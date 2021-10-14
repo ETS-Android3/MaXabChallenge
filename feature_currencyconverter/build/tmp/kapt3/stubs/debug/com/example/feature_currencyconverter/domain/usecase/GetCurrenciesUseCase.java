@@ -21,14 +21,14 @@ public final class GetCurrenciesUseCase {
     @kotlin.Metadata(mv = {1, 5, 1}, k = 1, d1 = {"\u0000\u0016\n\u0002\u0018\u0002\n\u0002\u0010\u0000\n\u0002\b\u0002\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0000\bv\u0018\u00002\u00020\u0001:\u0002\u0002\u0003\u0082\u0001\u0002\u0004\u0005\u00a8\u0006\u0006"}, d2 = {"Lcom/example/feature_currencyconverter/domain/usecase/GetCurrenciesUseCase$Result;", "", "Error", "Success", "Lcom/example/feature_currencyconverter/domain/usecase/GetCurrenciesUseCase$Result$Success;", "Lcom/example/feature_currencyconverter/domain/usecase/GetCurrenciesUseCase$Result$Error;", "feature_currencyconverter_debug"})
     public static abstract interface Result {
         
-        @kotlin.Metadata(mv = {1, 5, 1}, k = 1, d1 = {"\u0000*\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0002\b\u0006\n\u0002\u0010\u000b\n\u0000\n\u0002\u0010\u0000\n\u0000\n\u0002\u0010\b\n\u0000\n\u0002\u0010\u000e\n\u0000\b\u0086\b\u0018\u00002\u00020\u0001B\u000f\u0012\b\u0010\u0002\u001a\u0004\u0018\u00010\u0003\u00a2\u0006\u0002\u0010\u0004J\u000b\u0010\u0007\u001a\u0004\u0018\u00010\u0003H\u00c6\u0003J\u0015\u0010\b\u001a\u00020\u00002\n\b\u0002\u0010\u0002\u001a\u0004\u0018\u00010\u0003H\u00c6\u0001J\u0013\u0010\t\u001a\u00020\n2\b\u0010\u000b\u001a\u0004\u0018\u00010\fH\u00d6\u0003J\t\u0010\r\u001a\u00020\u000eH\u00d6\u0001J\t\u0010\u000f\u001a\u00020\u0010H\u00d6\u0001R\u0013\u0010\u0002\u001a\u0004\u0018\u00010\u0003\u00a2\u0006\b\n\u0000\u001a\u0004\b\u0005\u0010\u0006\u00a8\u0006\u0011"}, d2 = {"Lcom/example/feature_currencyconverter/domain/usecase/GetCurrenciesUseCase$Result$Success;", "Lcom/example/feature_currencyconverter/domain/usecase/GetCurrenciesUseCase$Result;", "data", "Lcom/example/feature_currencyconverter/domain/model/Country;", "(Lcom/example/feature_currencyconverter/domain/model/Country;)V", "getData", "()Lcom/example/feature_currencyconverter/domain/model/Country;", "component1", "copy", "equals", "", "other", "", "hashCode", "", "toString", "", "feature_currencyconverter_debug"})
+        @kotlin.Metadata(mv = {1, 5, 1}, k = 1, d1 = {"\u0000*\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0002\b\u0006\n\u0002\u0010\u000b\n\u0000\n\u0002\u0010\u0000\n\u0000\n\u0002\u0010\b\n\u0000\n\u0002\u0010\u000e\n\u0000\b\u0086\b\u0018\u00002\u00020\u0001B\u000f\u0012\b\u0010\u0002\u001a\u0004\u0018\u00010\u0003\u00a2\u0006\u0002\u0010\u0004J\u000b\u0010\u0007\u001a\u0004\u0018\u00010\u0003H\u00c6\u0003J\u0015\u0010\b\u001a\u00020\u00002\n\b\u0002\u0010\u0002\u001a\u0004\u0018\u00010\u0003H\u00c6\u0001J\u0013\u0010\t\u001a\u00020\n2\b\u0010\u000b\u001a\u0004\u0018\u00010\fH\u00d6\u0003J\t\u0010\r\u001a\u00020\u000eH\u00d6\u0001J\t\u0010\u000f\u001a\u00020\u0010H\u00d6\u0001R\u0013\u0010\u0002\u001a\u0004\u0018\u00010\u0003\u00a2\u0006\b\n\u0000\u001a\u0004\b\u0005\u0010\u0006\u00a8\u0006\u0011"}, d2 = {"Lcom/example/feature_currencyconverter/domain/usecase/GetCurrenciesUseCase$Result$Success;", "Lcom/example/feature_currencyconverter/domain/usecase/GetCurrenciesUseCase$Result;", "data", "Lcom/example/feature_currencyconverter/domain/model/Currency;", "(Lcom/example/feature_currencyconverter/domain/model/Currency;)V", "getData", "()Lcom/example/feature_currencyconverter/domain/model/Currency;", "component1", "copy", "equals", "", "other", "", "hashCode", "", "toString", "", "feature_currencyconverter_debug"})
         public static final class Success implements com.example.feature_currencyconverter.domain.usecase.GetCurrenciesUseCase.Result {
             @org.jetbrains.annotations.Nullable()
-            private final com.example.feature_currencyconverter.domain.model.Country data = null;
+            private final com.example.feature_currencyconverter.domain.model.Currency data = null;
             
             @org.jetbrains.annotations.NotNull()
             public final com.example.feature_currencyconverter.domain.usecase.GetCurrenciesUseCase.Result.Success copy(@org.jetbrains.annotations.Nullable()
-            com.example.feature_currencyconverter.domain.model.Country data) {
+            com.example.feature_currencyconverter.domain.model.Currency data) {
                 return null;
             }
             
@@ -50,17 +50,17 @@ public final class GetCurrenciesUseCase {
             }
             
             public Success(@org.jetbrains.annotations.Nullable()
-            com.example.feature_currencyconverter.domain.model.Country data) {
+            com.example.feature_currencyconverter.domain.model.Currency data) {
                 super();
             }
             
             @org.jetbrains.annotations.Nullable()
-            public final com.example.feature_currencyconverter.domain.model.Country component1() {
+            public final com.example.feature_currencyconverter.domain.model.Currency component1() {
                 return null;
             }
             
             @org.jetbrains.annotations.Nullable()
-            public final com.example.feature_currencyconverter.domain.model.Country getData() {
+            public final com.example.feature_currencyconverter.domain.model.Currency getData() {
                 return null;
             }
         }

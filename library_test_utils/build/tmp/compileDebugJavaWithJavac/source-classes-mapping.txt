@@ -1,2 +1,0 @@
-com/igorwojda/showcase/library/testutils/BuildConfig.java
- com.igorwojda.showcase.library.testutils.BuildConfig

@@ -15,8 +15,8 @@ import com.example.core.di.ViewModelFactory
 import com.example.core.di.utils.InjectUtils
 import com.example.feature_currencyconverter.databinding.FragmentCurrenciesBinding
 import com.example.feature_currencyconverter.di.DaggerCurrencyConverterComponent
-import com.example.feature_currencyconverter.domain.model.Country
-import com.example.feature_currencyconverter.domain.model.CountryRate
+import com.example.feature_currencyconverter.domain.model.Currency
+import com.example.feature_currencyconverter.domain.model.CurrencyRate
 import com.example.feature_currencyconverter.presentation.currencies.ui.adapter.CurrenciesAdapter
 import com.example.feature_currencyconverter.presentation.currencies.viewmodel.CurrenciesViewModel
 import com.example.maxabchallenge.app.getMaxabApp
@@ -61,16 +61,16 @@ class CurrenciesFragment : BaseFragment() {
     }
 
     private val stateObserver = Observer<CurrenciesViewModel.ViewState> {
-        setData(it.country)
+        setData(it.currency)
         binding.progressRootView.rootView.handleVisibility(it.isLoading)
         binding.errorRootView.rootView.handleVisibility(it.isError)
     }
 
 
-    private fun setData(country: Country?) {
-        country?.let {
-            currenciesAdapter.setItems(country.rates)
-            binding.selectedCountryRootView.countryCurrencyTv.text = country.selectedCountry
+    private fun setData(currency: Currency?) {
+        currency?.let {
+            currenciesAdapter.setItems(currency.rates)
+            binding.selectedCountryRootView.countryCurrencyTv.text = currency.selectedCountry
         }
     }
 
@@ -92,8 +92,8 @@ class CurrenciesFragment : BaseFragment() {
         binding.recyclerView.adapter = currenciesAdapter
     }
 
-    private fun onCountrySelected(countryRate: CountryRate) {
-        currenciesViewModel.navigateToConvertCurrency(countryRate)
+    private fun onCountrySelected(currencyRate: CurrencyRate) {
+        currenciesViewModel.navigateToConvertCurrency(currencyRate)
     }
 
 

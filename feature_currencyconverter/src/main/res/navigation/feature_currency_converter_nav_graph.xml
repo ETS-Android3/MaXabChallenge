@@ -23,7 +23,7 @@
         app:moduleName="feature_currencyconverter">
         <argument
             android:name="countryConverter"
-            app:argType="com.example.feature_currencyconverter.presentation.convert.model.CountryRateConverter" />
+            app:argType="com.example.feature_currencyconverter.presentation.convert.model.CurrencyRateConverter" />
     </fragment>
 
 </navigation>

@@ -3,9 +3,9 @@ package com.example.feature_currencyconverter.presentation.currencies.di
 import android.content.Context
 import androidx.room.Room
 import com.example.feature_currencyconverter.data.CurrenciesRepositoryImpl
-import com.example.feature_currencyconverter.data.local.CountriesDao
+import com.example.feature_currencyconverter.data.local.CurrenciesDao
 import com.example.feature_currencyconverter.data.local.CurrencyConverterDatabase
-import com.example.feature_currencyconverter.data.remote.service.CountriesAPIService
+import com.example.feature_currencyconverter.data.remote.service.CurrenciesAPIService
 import com.example.feature_currencyconverter.domain.repository.CurrenciesRepository
 import dagger.Module
 import dagger.Provides
@@ -16,10 +16,10 @@ import retrofit2.Retrofit
 class CurrenciesModule {
 
     @Provides
-    internal fun provideCountriesAPIService(retrofit: Retrofit.Builder): CountriesAPIService {
+    internal fun provideCountriesAPIService(retrofit: Retrofit.Builder): CurrenciesAPIService {
         return retrofit
             .build()
-            .create(CountriesAPIService::class.java)
+            .create(CurrenciesAPIService::class.java)
     }
 
     @Provides
@@ -32,14 +32,14 @@ class CurrenciesModule {
 
 
     @Provides
-    internal fun provideAlbumDao(currencyConverterDatabase: CurrencyConverterDatabase): CountriesDao {
+    internal fun provideAlbumDao(currencyConverterDatabase: CurrencyConverterDatabase): CurrenciesDao {
         return currencyConverterDatabase.countries()
     }
 
     @Provides
     internal fun provideAlbumRepository(
-        countriesAPIService: CountriesAPIService,
-        countriesDao: CountriesDao
+        currenciesAPIService: CurrenciesAPIService,
+        currenciesDao: CurrenciesDao
     ): CurrenciesRepository =
-        CurrenciesRepositoryImpl(countriesAPIService,countriesDao)
+        CurrenciesRepositoryImpl(currenciesAPIService,currenciesDao)
 }

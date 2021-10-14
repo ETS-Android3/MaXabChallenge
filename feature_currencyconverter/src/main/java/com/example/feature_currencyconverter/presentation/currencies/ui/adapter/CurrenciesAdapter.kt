@@ -5,13 +5,13 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.feature_currencyconverter.R
-import com.example.feature_currencyconverter.domain.model.CountryRate
+import com.example.feature_currencyconverter.domain.model.CurrencyRate
 
 class CurrenciesAdapter(
-    private val itemClickAction: (item: CountryRate) -> Unit) :
+    private val itemClickAction: (item: CurrencyRate) -> Unit) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    private var countries: MutableList<CountryRate> = mutableListOf()
+    private var currencies: MutableList<CurrencyRate> = mutableListOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return CurrencyViewHolder(
@@ -22,29 +22,29 @@ class CurrenciesAdapter(
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        val item = countries[position]
+        val item = currencies[position]
         handleBinding(holder, item)
     }
 
     private fun handleBinding(
         holder: RecyclerView.ViewHolder,
-        item: CountryRate?
+        item: CurrencyRate?
     ) {
         (holder as CurrencyViewHolder).onBind(item)
     }
 
 
-    override fun getItemCount() = countries.size ?: 0
+    override fun getItemCount() = currencies.size
 
     @SuppressLint("NotifyDataSetChanged")
-    internal fun setItems(result: MutableList<CountryRate> = mutableListOf()) {
-        countries = result
+    internal fun setItems(result: MutableList<CurrencyRate> = mutableListOf()) {
+        currencies = result
         notifyDataSetChanged()
     }
 
     @SuppressLint("NotifyDataSetChanged")
     fun clear() {
-        countries.clear()
+        currencies.clear()
         notifyDataSetChanged()
     }
 }

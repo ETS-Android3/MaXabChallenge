@@ -10,7 +10,7 @@ import androidx.navigation.fragment.navArgs
 import com.example.core.base.presentation.fragment.BaseFragment
 import com.example.core.di.ViewModelFactory
 import com.example.feature_currencyconverter.databinding.FragmentConvertCurrencyBinding
-import com.example.feature_currencyconverter.presentation.convert.model.CountryRateConverter
+import com.example.feature_currencyconverter.presentation.convert.model.CurrencyRateConverter
 import com.example.feature_currencyconverter.presentation.convert.viewmodel.ConvertCurrencyViewModel
 import javax.inject.Inject
 
@@ -44,21 +44,26 @@ class ConvertCurrencyFragment : BaseFragment() {
         binding.baseCountryCurrencyTv.addTextChangedListener { amount ->
             amount?.let {
                 if (amount.isNotEmpty() && amount.isNotBlank()) {
-                    val convertedAmount = convertCurrencyViewModel.convert(
-                        amount.toString().toDouble(),
-                        args.countryConverter.selectedCountryRate ?: 0.0
-                    )
-                    setConvertedAmount(convertedAmount)
-                }
+                    convertCurrency(amount.toString())
+                }else
+                    convertCurrency("0.0")
             }
         }
     }
 
-    private fun setData(countryRateConverter: CountryRateConverter) {
-        binding.baseCountryCurrencyTv.setText(countryRateConverter.baseCountryRate.toString())
-        binding.baseCountryIsoCodeTv.text = countryRateConverter.baseCountryISO
-        binding.countryIsoCodeTv.text = countryRateConverter.selectedCountryISO
-        binding.countryCurrencyTv.text = countryRateConverter.selectedCountryRate.toString()
+    private fun convertCurrency(amount: String) {
+        val convertedAmount = convertCurrencyViewModel.convert(
+            amount.toDouble(),
+            args.countryConverter.selectedCountryRate ?: 0.0
+        )
+        setConvertedAmount(convertedAmount)
+    }
+
+    private fun setData(currencyRateConverter: CurrencyRateConverter) {
+        binding.baseCountryCurrencyTv.setText(currencyRateConverter.baseCountryRate.toString())
+        binding.baseCountryIsoCodeTv.text = currencyRateConverter.baseCountryISO
+        binding.countryIsoCodeTv.text = currencyRateConverter.selectedCountryISO
+        binding.countryCurrencyTv.text = currencyRateConverter.selectedCountryRate.toString()
     }
 
     private fun setConvertedAmount(convertedAmount: String) {

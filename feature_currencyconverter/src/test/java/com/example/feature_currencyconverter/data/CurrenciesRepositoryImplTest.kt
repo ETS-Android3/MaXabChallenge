@@ -1,9 +1,9 @@
 package com.example.feature_currencyconverter.data
 
-import com.example.feature_currencyconverter.data.local.CountriesDao
+import com.example.feature_currencyconverter.data.local.CurrenciesDao
 import com.example.feature_currencyconverter.data.local.model.toDomainModel
 import com.example.feature_currencyconverter.data.remote.model.toEntity
-import com.example.feature_currencyconverter.data.remote.service.CountriesAPIService
+import com.example.feature_currencyconverter.data.remote.service.CurrenciesAPIService
 import io.mockk.MockKAnnotations
 import io.mockk.coEvery
 import io.mockk.impl.annotations.MockK
@@ -16,10 +16,10 @@ import java.net.UnknownHostException
 internal class CurrenciesRepositoryImplTest{
 
     @MockK
-    internal lateinit var mockService: CountriesAPIService
+    internal lateinit var mockService: CurrenciesAPIService
 
     @MockK
-    internal lateinit var mockCountriesDao: CountriesDao
+    internal lateinit var mockCurrenciesDao: CurrenciesDao
 
     private lateinit var cut: CurrenciesRepositoryImpl
 
@@ -27,20 +27,20 @@ internal class CurrenciesRepositoryImplTest{
     fun setUp() {
         MockKAnnotations.init(this)
 
-        cut = CurrenciesRepositoryImpl(mockService, mockCountriesDao)
+        cut = CurrenciesRepositoryImpl(mockService, mockCurrenciesDao)
     }
 
 
     @Test
     fun `getCurrencies fetches currencies and maps to Model`() {
         // given
-        coEvery { mockService.getCountries() } returns DataFixtures.getCountriesResponse()
+        coEvery { mockService.getCurrencies() } returns DataFixtures.getCountriesResponse()
 
         coEvery {
-            mockCountriesDao.insertCountries(any())
+            mockCurrenciesDao.insertCountries(any())
         } returns Unit
 
-        coEvery { mockCountriesDao.getAll() } returns DataFixtures.getCountriesResponse().toEntity()
+        coEvery { mockCurrenciesDao.getAll() } returns DataFixtures.getCountriesResponse().toEntity()
 
         // when
         val result = runBlocking { cut.getCurrencies() }
@@ -56,8 +56,8 @@ internal class CurrenciesRepositoryImplTest{
         val countryEntities = apiResponse.toEntity()
         val country = apiResponse.toEntity().toDomainModel()
 
-        coEvery { mockService.getCountries() } throws UnknownHostException()
-        coEvery { mockCountriesDao.getAll() } returns countryEntities
+        coEvery { mockService.getCurrencies() } throws UnknownHostException()
+        coEvery { mockCurrenciesDao.getAll() } returns countryEntities
 
         // when
         val result = runBlocking { cut.getCurrencies() }
@@ -73,7 +73,7 @@ internal class CurrenciesRepositoryImplTest{
         val countryEntity = DataFixtures.getCountriesResponse().toEntity()
         val baseCountry = countryEntity.base
 
-        coEvery { mockCountriesDao.getAll() } returns countryEntity
+        coEvery { mockCurrenciesDao.getAll() } returns countryEntity
 
         // when
         val result = runBlocking { cut.getBaseCurrency() }

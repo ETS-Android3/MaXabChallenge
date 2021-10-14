@@ -5,8 +5,8 @@ import com.example.core.base.presentation.navigation.NavManager
 import com.example.core.base.presentation.viewmodel.BaseAction
 import com.example.core.base.presentation.viewmodel.BaseViewModel
 import com.example.core.base.presentation.viewmodel.BaseViewState
-import com.example.feature_currencyconverter.domain.model.Country
-import com.example.feature_currencyconverter.domain.model.CountryRate
+import com.example.feature_currencyconverter.domain.model.Currency
+import com.example.feature_currencyconverter.domain.model.CurrencyRate
 import com.example.feature_currencyconverter.domain.model.toCountryRateConverter
 import com.example.feature_currencyconverter.domain.usecase.GetCurrenciesUseCase
 import com.example.feature_currencyconverter.domain.usecase.GetBaseCurrencyUseCase
@@ -19,7 +19,7 @@ internal class CurrenciesViewModel @Inject constructor(
     private val getBaseCurrencyUseCase: GetBaseCurrencyUseCase
 ) : BaseViewModel<CurrenciesViewModel.ViewState, CurrenciesViewModel.Action>(ViewState()) {
 
-    var baseCountry: CountryRate? = null
+    var baseCurrency: CurrencyRate? = null
 
     override fun onLoadData() {
         getCurrenciesList()
@@ -29,17 +29,17 @@ internal class CurrenciesViewModel @Inject constructor(
         is Action.LoadingSuccess -> state.copy(
             isLoading = false,
             isError = false,
-            country = viewAction.country
+            currency = viewAction.currency
         )
         is Action.LoadingFailure -> state.copy(
             isLoading = false,
             isError = true,
-            country = null
+            currency = null
         )
         Action.Loading -> state.copy(
             isLoading = true,
             isError = false,
-            country = null
+            currency = null
         )
     }
 
@@ -65,30 +65,30 @@ internal class CurrenciesViewModel @Inject constructor(
                 Action.LoadingFailure
         }
 
-    private suspend fun getBaseCountry(): CountryRate? {
-        return if (baseCountry != null) {
-            baseCountry
+    private suspend fun getBaseCountry(): CurrencyRate? {
+        return if (baseCurrency != null) {
+            baseCurrency
         } else {
             getBaseCurrencyUseCase.execute().also { result ->
                 when (result) {
                     is GetBaseCurrencyUseCase.Result.Error -> sendAction(Action.LoadingFailure)
                     is GetBaseCurrencyUseCase.Result.Success -> {
-                        baseCountry = result.data
+                        baseCurrency = result.data
 
                     }
                 }
             }
-            baseCountry
+            baseCurrency
         }
     }
 
-    fun navigateToConvertCurrency(selectedCountry: CountryRate) {
+    fun navigateToConvertCurrency(selectedCurrency: CurrencyRate) {
         viewModelScope.launch {
             getBaseCountry()?.let { baseCountry ->
-                if (selectedCountry.iso != baseCountry.iso) {
+                if (selectedCurrency.iso != baseCountry.iso) {
                     val navDirections = CurrenciesFragmentDirections
                         .actionCurrenciesFragmentToConvertFragment(
-                            buildCountryRateConverter(baseCountry, selectedCountry)
+                            buildCountryRateConverter(baseCountry, selectedCurrency)
                         )
                     NavManager.navigate(navDirections)
                 }
@@ -97,19 +97,19 @@ internal class CurrenciesViewModel @Inject constructor(
     }
 
     private fun buildCountryRateConverter(
-        baseCountry: CountryRate?,
-        selectedCountry: CountryRate
+        baseCurrency: CurrencyRate?,
+        selectedCurrency: CurrencyRate
     ) =
-        baseCountry?.toCountryRateConverter(selectedCountry)!!
+        baseCurrency?.toCountryRateConverter(selectedCurrency)!!
 
     internal data class ViewState(
         val isLoading: Boolean = true,
         val isError: Boolean = false,
-        val country: Country? = null
+        val currency: Currency? = null
     ) : BaseViewState
 
     internal sealed interface Action : BaseAction {
-        class LoadingSuccess(val country: Country) : Action
+        class LoadingSuccess(val currency: Currency) : Action
         object LoadingFailure : Action
         object Loading : Action
     }

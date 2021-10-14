@@ -1,8 +1,8 @@
 package com.example.feature_currencyconverter.presentation.currencies.viewmodel
 
 import com.example.core.base.presentation.navigation.NavManager
-import com.example.feature_currencyconverter.domain.model.Country
-import com.example.feature_currencyconverter.domain.model.CountryRate
+import com.example.feature_currencyconverter.domain.model.Currency
+import com.example.feature_currencyconverter.domain.model.CurrencyRate
 import com.example.feature_currencyconverter.domain.model.toCountryRateConverter
 import com.example.feature_currencyconverter.domain.usecase.GetBaseCurrencyUseCase
 import com.example.feature_currencyconverter.domain.usecase.GetCurrenciesUseCase
@@ -60,15 +60,15 @@ internal class CurrenciesViewModelTest {
     @Test
     fun `navigate to convert currency`() {
         // given
-        val baseCurrency = CountryRate("EUR", 15.0)
-        val selectedCurrency = CountryRate("EGP", 5.0)
+        val baseCurrency = CurrencyRate("EUR", 15.0)
+        val selectedCurrency = CurrencyRate("EGP", 5.0)
         val countryRateConverter = baseCurrency.toCountryRateConverter(selectedCurrency)
 
         val navDirections = CurrenciesFragmentDirections
             .actionCurrenciesFragmentToConvertFragment(countryRateConverter)
 
         coEvery { mockGetBaseCurrencyUseCase.execute() } returns GetBaseCurrencyUseCase.Result.Success(baseCurrency)
-        cut.baseCountry = baseCurrency
+        cut.baseCurrency = baseCurrency
         // when
         cut.navigateToConvertCurrency(selectedCurrency)
 
@@ -88,14 +88,14 @@ internal class CurrenciesViewModelTest {
         cut.stateLiveData.value shouldBeEqualTo CurrenciesViewModel.ViewState(
             isLoading = false,
             isError = true,
-            country = null
+            currency = null
         )
     }
 
     @Test
     fun `verify state when getCurrenciesList returns data`() {
         // given
-        val country = Country("EUR", mutableListOf(CountryRate()))
+        val country = Currency("EUR", mutableListOf(CurrencyRate()))
         coEvery { mockGetCurrenciesUseCase.execute() } returns GetCurrenciesUseCase.Result.Success(country)
 
         // when
@@ -105,7 +105,7 @@ internal class CurrenciesViewModelTest {
         cut.stateLiveData.value shouldBeEqualTo CurrenciesViewModel.ViewState(
             isLoading = false,
             isError = false,
-            country = country
+            currency = country
         )
     }
 }
