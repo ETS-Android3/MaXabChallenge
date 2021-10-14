@@ -42,12 +42,16 @@ class ConvertCurrencyFragment : BaseFragment() {
     }
 
     private fun observeBaseCurrencyAmountChange() {
-        binding.baseCountryCurrencyTv.addTextChangedListener {
-            val convertedAmount = convertCurrencyViewModel.convert(
-                it.toString().toDouble(),
-                args.countryConverter.selectedCountryRate ?: 0.0
-            )
-            setConvertedAmount(convertedAmount)
+        binding.baseCountryCurrencyTv.addTextChangedListener { amount ->
+            amount?.let {
+                if (amount.isNotEmpty() && amount.isNotBlank()) {
+                    val convertedAmount = convertCurrencyViewModel.convert(
+                        amount.toString().toDouble(),
+                        args.countryConverter.selectedCountryRate ?: 0.0
+                    )
+                    setConvertedAmount(convertedAmount)
+                }
+            }
         }
     }
 
