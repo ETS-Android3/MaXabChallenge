@@ -10,7 +10,6 @@ import com.example.feature_currencyconverter.domain.model.CountryRate
 import com.example.feature_currencyconverter.domain.model.toCountryRateConverter
 import com.example.feature_currencyconverter.domain.usecase.GetCurrenciesUseCase
 import com.example.feature_currencyconverter.domain.usecase.GetBaseCurrencyUseCase
-import com.example.feature_currencyconverter.presentation.convert.model.CountryRateConverter
 import com.example.feature_currencyconverter.presentation.currencies.ui.fragment.CurrenciesFragmentDirections
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -19,6 +18,8 @@ internal class CurrenciesViewModel @Inject constructor(
     private val getCurrenciesUseCase: GetCurrenciesUseCase,
     private val getBaseCurrencyUseCase: GetBaseCurrencyUseCase
 ) : BaseViewModel<CurrenciesViewModel.ViewState, CurrenciesViewModel.Action>(ViewState()) {
+
+    var baseCountry: CountryRate? = null
 
     override fun onLoadData() {
         getCurrenciesList()
@@ -65,7 +66,9 @@ internal class CurrenciesViewModel @Inject constructor(
         }
 
     private suspend fun getBaseCountry(): CountryRate? {
-        var baseCountry: CountryRate? = null
+        return if (baseCountry != null) {
+            baseCountry
+        } else {
             getBaseCurrencyUseCase.execute().also { result ->
                 when (result) {
                     is GetBaseCurrencyUseCase.Result.Error -> sendAction(Action.LoadingFailure)
@@ -75,7 +78,8 @@ internal class CurrenciesViewModel @Inject constructor(
                     }
                 }
             }
-        return baseCountry
+            baseCountry
+        }
     }
 
     fun navigateToConvertCurrency(selectedCountry: CountryRate) {
@@ -92,13 +96,11 @@ internal class CurrenciesViewModel @Inject constructor(
         }
     }
 
-
     private fun buildCountryRateConverter(
         baseCountry: CountryRate?,
         selectedCountry: CountryRate
     ) =
         baseCountry?.toCountryRateConverter(selectedCountry)!!
-
 
     internal data class ViewState(
         val isLoading: Boolean = true,
