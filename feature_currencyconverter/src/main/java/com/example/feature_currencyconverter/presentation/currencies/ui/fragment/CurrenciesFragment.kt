@@ -47,13 +47,17 @@ class CurrenciesFragment : BaseFragment() {
     }
 
     override fun onAttach(context: Context) {
+        initComponent()
+        super.onAttach(context)
+    }
+
+    private fun initComponent() {
         DaggerCurrencyConverterComponent
             .builder()
             .application(requireActivity().getMaxabApp())
             .baseComponent(InjectUtils.provideBaseComponent(requireActivity().getMaxabApp()))
             .build()
             .inject(requireActivity() as BaseActivity)
-        super.onAttach(context)
     }
 
     private val stateObserver = Observer<CurrenciesViewModel.ViewState> {

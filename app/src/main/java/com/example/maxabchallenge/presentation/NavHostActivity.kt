@@ -16,16 +16,19 @@ class NavHostActivity : BaseActivity() {
     private val binding: ActivityNavHostBinding by viewBinding()
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        initComponent()
+        super.onCreate(savedInstanceState)
+        setContentView(binding.root)
+        initNavManager()
+    }
+
+    private fun initComponent() {
         DaggerAppComponent
             .builder()
             .application(getMaxabApp())
             .baseComponent(InjectUtils.provideBaseComponent(getMaxabApp()))
             .build()
             .inject(getMaxabApp())
-
-        super.onCreate(savedInstanceState)
-        setContentView(binding.root)
-        initNavManager()
     }
 
     private fun initNavManager() {

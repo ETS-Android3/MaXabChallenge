@@ -7,10 +7,11 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 import androidx.viewbinding.ViewBinding
+import com.example.core.base.presentation.fragment.BaseFragment
 import kotlin.properties.ReadOnlyProperty
 import kotlin.reflect.KProperty
 
-inline fun <reified T : ViewBinding> Fragment.viewBinding() = FragmentViewBindingDelegate(T::class.java, this)
+inline fun <reified T : ViewBinding> BaseFragment.viewBinding() = FragmentViewBindingDelegate(T::class.java, this)
 
 class FragmentViewBindingDelegate<T : ViewBinding>(
     bindingClass: Class<T>,
