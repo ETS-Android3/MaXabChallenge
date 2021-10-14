@@ -5,6 +5,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.example.feature_currencyconverter.data.local.model.CountryEntity
+import com.example.feature_currencyconverter.domain.model.Country
 
 @Dao
 internal interface CountriesDao {
