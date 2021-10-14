@@ -179,4 +179,3 @@ dependencyResolutionManagement {
         }
     }
 }
-include(":library_test_utils")
