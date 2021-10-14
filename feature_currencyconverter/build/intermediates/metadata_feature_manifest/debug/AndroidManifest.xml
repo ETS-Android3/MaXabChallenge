@@ -15,7 +15,9 @@
         <dist:fusing include="true" />
     </dist:module>
 
-    <application android:debuggable="true" >
+    <application
+        android:debuggable="true"
+        android:testOnly="true" >
         <service
             android:name="androidx.room.MultiInstanceInvalidationService"
             android:directBootAware="true"
