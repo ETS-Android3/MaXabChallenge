@@ -37,7 +37,6 @@ used different branches to implement and refactor the features to avoid conflict
 - Partly include comments.
 - Reactive code
 - Kotlin DSL
-- Enabling ProGuard
 
 ## Languages, libraries and tools used
 
