@@ -31,5 +31,6 @@ mipmap ic_launcher
 mipmap ic_launcher_round
 navigation feature_currency_converter_nav_graph
 string amount
+string amount_invlid
 string data_not_found
 style Theme_CleanArchWithMultiModuleShowCase

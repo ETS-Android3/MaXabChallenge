@@ -2,5 +2,6 @@
     <string name="data_not_found">Data not found</string>
 
     <string name="amount">Amount</string>
+    <string name="amount_invlid">Enter valid amount !</string>
 
 </resources>

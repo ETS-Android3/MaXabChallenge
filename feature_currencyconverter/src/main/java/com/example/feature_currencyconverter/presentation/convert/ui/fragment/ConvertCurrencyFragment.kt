@@ -6,10 +6,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.widget.addTextChangedListener
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
+import com.example.core.base.presentation.extension.observe
+import com.example.core.base.presentation.extension.toast
 import com.example.core.base.presentation.fragment.BaseFragment
 import com.example.core.di.ViewModelFactory
+import com.example.feature_currencyconverter.R
 import com.example.feature_currencyconverter.databinding.FragmentConvertCurrencyBinding
 import com.example.feature_currencyconverter.di.ext.initCurrencyConverterComponent
 import com.example.feature_currencyconverter.presentation.convert.model.CurrencyRateConverter
@@ -41,8 +45,15 @@ class ConvertCurrencyFragment : BaseFragment() {
         super.onAttach(context)
     }
 
+    private val stateObserver = Observer<ConvertCurrencyViewModel.ViewState> {
+        setConvertedAmount(it.isValid)
+        requireContext().toast(resId = R.string.amount_invlid, show = it.isError)
+    }
+
+
     override fun init() {
         setData(args.countryConverter)
+        observe(convertCurrencyViewModel.stateLiveData, stateObserver)
         observeBaseCurrencyAmountChange()
     }
 
@@ -51,18 +62,17 @@ class ConvertCurrencyFragment : BaseFragment() {
             amount?.let {
                 if (amount.isNotEmpty() && amount.isNotBlank()) {
                     convertCurrency(amount.toString())
-                }else
+                } else
                     convertCurrency("0.0")
             }
         }
     }
 
     private fun convertCurrency(amount: String) {
-        val convertedAmount = convertCurrencyViewModel.convert(
-            amount.toDouble(),
+        convertCurrencyViewModel.convert(
+            amount.toDoubleOrNull() ?: 0.0,
             args.countryConverter.selectedCountryRate ?: 0.0
         )
-        setConvertedAmount(convertedAmount)
     }
 
     private fun setData(currencyRateConverter: CurrencyRateConverter) {

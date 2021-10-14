@@ -6,6 +6,7 @@ import android.view.View.GONE
 import android.view.View.INVISIBLE
 import android.view.View.VISIBLE
 
+
 fun View.setOnDebouncedClickListener(action: () -> Unit) {
     val actionDebouncer = ActionDebouncer(action)
 
@@ -49,9 +50,9 @@ var View.visible
 
 fun View.handleVisibility(visibilityState: Boolean) {
     if (visibilityState)
-       show()
+        show()
     else
-       hide(true)
+        hide(true)
 
 }
 
@@ -62,3 +63,5 @@ fun View.hide(gone: Boolean = true) {
 fun View.show() {
     visibility = VISIBLE
 }
+
+

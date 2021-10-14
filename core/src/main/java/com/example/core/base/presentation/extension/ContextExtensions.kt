@@ -8,8 +8,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.os.bundleOf
 import kotlin.reflect.KProperty1
 
-fun Context.toast(@StringRes resId: Int, length: Int = Toast.LENGTH_SHORT) {
-    Toast.makeText(this, getString(resId), length).show()
+fun Context.toast(@StringRes resId: Int, length: Int = Toast.LENGTH_SHORT, show: Boolean = true) {
+    if (show)
+        Toast.makeText(this, getString(resId), length).show()
 }
 
 inline fun <reified T : AppCompatActivity> Context.startActivity(
@@ -21,3 +22,5 @@ inline fun <reified T : AppCompatActivity> Context.startActivity(
     intent.putExtras(bundleOf(*extras))
     startActivity(intent)
 }
+
+

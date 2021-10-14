@@ -26,29 +26,29 @@
                         "startOffsets": "-1"
                     },
                     "to": {
-                        "startLines": "5",
+                        "startLines": "6",
                         "startColumns": "4",
-                        "startOffsets": "244",
-                        "endLines": "17",
+                        "startOffsets": "307",
+                        "endLines": "18",
                         "endColumns": "12",
-                        "endOffsets": "862"
+                        "endOffsets": "925"
                     }
                 },
                 {
                     "source": "/home/mosaab/AndroidStudioProjects/MaXabChallenge/feature_currencyconverter/src/main/res/values/strings.xml",
                     "from": {
-                        "startLines": "3,-1",
-                        "startColumns": "4,-1",
-                        "startOffsets": "75,-1",
-                        "endColumns": "41,-1",
-                        "endOffsets": "112,-1"
+                        "startLines": "-1,4,-1",
+                        "startColumns": "-1,4,-1",
+                        "startOffsets": "-1,117,-1",
+                        "endColumns": "-1,62,-1",
+                        "endOffsets": "-1,175,-1"
                     },
                     "to": {
-                        "startLines": "3,4",
-                        "startColumns": "4,4",
-                        "startOffsets": "144,186",
-                        "endColumns": "41,57",
-                        "endOffsets": "181,239"
+                        "startLines": "3,4,5",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "144,186,249",
+                        "endColumns": "41,62,57",
+                        "endOffsets": "181,244,302"
                     }
                 }
             ]

@@ -1,3 +1,4 @@
+com.example.maxabchallenge:string/amount_invlid = 0x7e070002
 com.example.maxabchallenge:layout/fragment_currencies = 0x7e040002
 com.example.maxabchallenge:mipmap/ic_launcher = 0x7e050000
 com.example.maxabchallenge:style/Theme.CleanArchWithMultiModuleShowCase = 0x7e080000

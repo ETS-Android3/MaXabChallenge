@@ -30,5 +30,6 @@ int mipmap ic_launcher 0x7e050000
 int mipmap ic_launcher_round 0x7e050001
 int navigation feature_currency_converter_nav_graph 0x7e060000
 int string amount 0x7e070001
+int string amount_invlid 0x7e070002
 int string data_not_found 0x7e070000
 int style Theme_CleanArchWithMultiModuleShowCase 0x7e080000
