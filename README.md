@@ -8,9 +8,8 @@ rates as a list. When a user taps on a currency, a calculation view should appea
 currency and the base currency. Only the base currency field should be editable.
 (Consider this project as if you were developing a component within a large-scaled project)
 
-- Create your offline currency calculator that should convert the base currency to another
-currency.
--The app should handle offline mode if there is no network and in case
+- Create your offline currency calculator that should convert the base currency to anothercurrency.
+- The app should handle offline mode if there is no network and in case
 online it should load data from [ fixer.io]. So the user can use the app
 anytime.
 
