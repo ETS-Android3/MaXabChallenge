@@ -1,0 +1,57 @@
+{
+    "logs": [
+        {
+            "outputFile": "/home/mosaab/AndroidStudioProjects/MaXabChallenge/feature_currencyconverter/build/intermediates/incremental/mergeDebugResources/merged.dir/values/values.xml",
+            "map": [
+                {
+                    "source": "/home/mosaab/AndroidStudioProjects/MaXabChallenge/feature_currencyconverter/src/main/res/values/dimens.xml",
+                    "from": {
+                        "startLines": "-1",
+                        "startColumns": "-1",
+                        "startOffsets": "-1"
+                    },
+                    "to": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "100",
+                        "endColumns": "43",
+                        "endOffsets": "139"
+                    }
+                },
+                {
+                    "source": "/home/mosaab/AndroidStudioProjects/MaXabChallenge/feature_currencyconverter/src/main/res/values/themes.xml",
+                    "from": {
+                        "startLines": "-1",
+                        "startColumns": "-1",
+                        "startOffsets": "-1"
+                    },
+                    "to": {
+                        "startLines": "5",
+                        "startColumns": "4",
+                        "startOffsets": "244",
+                        "endLines": "17",
+                        "endColumns": "12",
+                        "endOffsets": "862"
+                    }
+                },
+                {
+                    "source": "/home/mosaab/AndroidStudioProjects/MaXabChallenge/feature_currencyconverter/src/main/res/values/strings.xml",
+                    "from": {
+                        "startLines": "3,-1",
+                        "startColumns": "4,-1",
+                        "startOffsets": "75,-1",
+                        "endColumns": "41,-1",
+                        "endOffsets": "112,-1"
+                    },
+                    "to": {
+                        "startLines": "3,4",
+                        "startColumns": "4,4",
+                        "startOffsets": "144,186",
+                        "endColumns": "41,57",
+                        "endOffsets": "181,239"
+                    }
+                }
+            ]
+        }
+    ]
+}
