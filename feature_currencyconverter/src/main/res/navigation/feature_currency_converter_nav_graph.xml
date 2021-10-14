@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:moduleName="feature_currencyconverter"
+    app:startDestination="@id/currenciesConverterFragment">
+    <fragment
+        android:id="@+id/currenciesConverterFragment"
+        android:name="com.example.feature_currencyconverter.presentation.currencies.ui.fragment.CurrenciesFragment"
+        android:label="CurrenciesFragment"
+        app:moduleName="feature_currencyconverter">
+
+
+        <action
+            android:id="@+id/action_currenciesFragment_to_convertFragment"
+            app:destination="@id/convertCurrencyFragment" />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/convertCurrencyFragment"
+        android:name="com.example.feature_currencyconverter.presentation.convert.ui.fragment.ConvertCurrencyFragment"
+        android:label="ConvertCurrencyFragment"
+        app:moduleName="feature_currencyconverter">
+        <argument
+            android:name="countryConverter"
+            app:argType="com.example.feature_currencyconverter.presentation.convert.model.CurrencyRateConverter" />
+    </fragment>
+
+</navigation>
