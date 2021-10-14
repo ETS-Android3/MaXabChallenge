@@ -3,7 +3,6 @@ package com.example.maxabchallenge.app.di
 import com.example.core.di.component.BaseComponent
 import com.example.maxabchallenge.app.MaxabChallengeApplication
 import com.example.maxabchallenge.app.di.scopes.NavHostActivityScope
-import com.example.maxabchallenge.presentation.NavHostActivity
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.support.AndroidSupportInjectionModule

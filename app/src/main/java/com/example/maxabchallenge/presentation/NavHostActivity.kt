@@ -5,10 +5,8 @@ import com.example.core.base.delegate.viewBinding
 import com.example.core.base.extension.navigateSafe
 import com.example.core.base.presentation.activity.BaseActivity
 import com.example.core.base.presentation.navigation.NavManager
-import com.example.core.di.utils.InjectUtils
 import com.example.maxabchallenge.R
-import com.example.maxabchallenge.app.di.DaggerAppComponent
-import com.example.maxabchallenge.app.getMaxabApp
+import com.example.maxabchallenge.app.di.ext.initAppComponent
 import com.example.maxabchallenge.databinding.ActivityNavHostBinding
 
 class NavHostActivity : BaseActivity() {
@@ -16,19 +14,10 @@ class NavHostActivity : BaseActivity() {
     private val binding: ActivityNavHostBinding by viewBinding()
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        initComponent()
+        initAppComponent()
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         initNavManager()
-    }
-
-    private fun initComponent() {
-        DaggerAppComponent
-            .builder()
-            .application(getMaxabApp())
-            .baseComponent(InjectUtils.provideBaseComponent(getMaxabApp()))
-            .build()
-            .inject(getMaxabApp())
     }
 
     private fun initNavManager() {
