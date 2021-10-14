@@ -19,7 +19,7 @@ I started working on it by migrating gradle files to kotlin dsl then modeling th
 applied clean architecture with MVVM design pattern used Coroutines to handle heavy operations on the background thread,
 Dagger 2 for dependency injection,Room for caching currencies,
 enabled proguard for obfuscating and securing the code base , 
-unit testing all the feature using (JUnit, Mockito),
+unit testing all the feature using (JUnit, Mockk),
 used different branches to implement and refactor the features to avoid conflicts.
 
 
