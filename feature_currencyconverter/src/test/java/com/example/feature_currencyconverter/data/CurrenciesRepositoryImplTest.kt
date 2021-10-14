@@ -65,4 +65,20 @@ internal class CurrenciesRepositoryImplTest{
         // then
         result shouldBeEqualTo country
     }
+
+
+    @Test
+    fun `getBaseCurrency get base currency and maps to Model`() {
+        // given
+        val countryEntity = DataFixtures.getCountriesResponse().toEntity()
+        val baseCountry = countryEntity.base
+
+        coEvery { mockCountriesDao.getAll() } returns countryEntity
+
+        // when
+        val result = runBlocking { cut.getBaseCurrency() }
+
+        // then
+        result shouldBeEqualTo countryEntity.toDomainModel().rates.find { it.iso == baseCountry }
+    }
 }

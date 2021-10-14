@@ -1,11 +1,10 @@
 package com.example.feature_currencyconverter.presentation.currencies.viewmodel
 
-import androidx.lifecycle.MutableLiveData
 import com.example.core.base.presentation.navigation.NavManager
-import com.example.core.base.presentation.viewmodel.BaseViewModel
 import com.example.feature_currencyconverter.domain.model.Country
 import com.example.feature_currencyconverter.domain.model.CountryRate
 import com.example.feature_currencyconverter.domain.model.toCountryRateConverter
+import com.example.feature_currencyconverter.domain.usecase.GetBaseCurrencyUseCase
 import com.example.feature_currencyconverter.domain.usecase.GetCurrenciesUseCase
 import com.example.feature_currencyconverter.presentation.currencies.ui.fragment.CurrenciesFragmentDirections
 import com.example.library_test_utils.testutils.CoroutinesTestExtension
@@ -16,14 +15,11 @@ import io.mockk.coVerify
 import io.mockk.impl.annotations.MockK
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.amshove.kluent.shouldBeEqualTo
-import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.RegisterExtension
 
-internal class CurrenciesViewModelTest : BaseViewModel<CurrenciesViewModel.ViewState, CurrenciesViewModel.Action>(
-    CurrenciesViewModel.ViewState()
-){
+internal class CurrenciesViewModelTest {
 
     @ExperimentalCoroutinesApi
     @JvmField
@@ -37,6 +33,9 @@ internal class CurrenciesViewModelTest : BaseViewModel<CurrenciesViewModel.ViewS
     @MockK
     internal lateinit var mockGetCurrenciesUseCase: GetCurrenciesUseCase
 
+    @MockK
+    internal lateinit var mockGetBaseCurrencyUseCase: GetBaseCurrencyUseCase
+
     @MockK(relaxed = true)
     internal lateinit var mockNavManager: NavManager
 
@@ -46,11 +45,11 @@ internal class CurrenciesViewModelTest : BaseViewModel<CurrenciesViewModel.ViewS
     fun setUp() {
         MockKAnnotations.init(this)
 
-        cut = CurrenciesViewModel(mockGetCurrenciesUseCase)
+        cut = CurrenciesViewModel(mockGetCurrenciesUseCase, mockGetBaseCurrencyUseCase)
     }
 
     @Test
-    fun `execute getAlbumUseCase`() {
+    fun `execute getCurrenciesList`() {
         // when
         cut.loadData()
 
@@ -59,18 +58,17 @@ internal class CurrenciesViewModelTest : BaseViewModel<CurrenciesViewModel.ViewS
     }
 
     @Test
-    fun `navigate to album details`() {
+    fun `navigate to convert currency`() {
         // given
-        val baseCurrency = CountryRate("EUR",15.0)
-        val selectedCurrency =  CountryRate("EGP",5.0)
+        val baseCurrency = CountryRate("EUR", 15.0)
+        val selectedCurrency = CountryRate("EGP", 5.0)
         val countryRateConverter = baseCurrency.toCountryRateConverter(selectedCurrency)
 
         val navDirections = CurrenciesFragmentDirections
             .actionCurrenciesFragmentToConvertFragment(countryRateConverter)
 
-        coEvery {stateLiveData.value?.country?.selectedCountry } returns "EUR"
-        coEvery {stateLiveData.value?.country?.rates?.find { it.iso == "EUR" } } returns baseCurrency
-
+        coEvery { mockGetBaseCurrencyUseCase.execute() } returns GetBaseCurrencyUseCase.Result.Success(baseCurrency)
+        cut.baseCountry = baseCurrency
         // when
         cut.navigateToConvertCurrency(selectedCurrency)
 
@@ -79,7 +77,7 @@ internal class CurrenciesViewModelTest : BaseViewModel<CurrenciesViewModel.ViewS
     }
 
     @Test
-    fun `verify state when GetAlbumListUseCase returns empty list`() {
+    fun `verify state when getCurrenciesList returns null`() {
         // given
         coEvery { mockGetCurrenciesUseCase.execute() } returns GetCurrenciesUseCase.Result.Success(null)
 
@@ -95,7 +93,7 @@ internal class CurrenciesViewModelTest : BaseViewModel<CurrenciesViewModel.ViewS
     }
 
     @Test
-    fun `verify state when GetAlbumListUseCase returns non-empty list`() {
+    fun `verify state when getCurrenciesList returns data`() {
         // given
         val country = Country("EUR", mutableListOf(CountryRate()))
         coEvery { mockGetCurrenciesUseCase.execute() } returns GetCurrenciesUseCase.Result.Success(country)
@@ -109,9 +107,5 @@ internal class CurrenciesViewModelTest : BaseViewModel<CurrenciesViewModel.ViewS
             isError = false,
             country = country
         )
-    }
-
-    override fun onReduceState(viewAction: CurrenciesViewModel.Action): CurrenciesViewModel.ViewState {
-        return CurrenciesViewModel.ViewState()
     }
 }
